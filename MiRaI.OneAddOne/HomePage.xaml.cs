@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Mntone.SvgForXaml;
+using Mntone.SvgForXaml.UI.Xaml;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -49,6 +51,9 @@ namespace MiRaI.OneAddOne
 		{
 			//LoginPage lp = new LoginPage();
 			//lp.Login(ParentWindow, this, UserLoginFun);
+			Frame rootFrame = Window.Current.Content as Frame;
+			if (rootFrame == null) return;
+			rootFrame.Navigate(typeof(LoginPage), new LoginPage.NavgateInfo());
 		}
 
 		private void btnHistory_Click(object sender, RoutedEventArgs e)

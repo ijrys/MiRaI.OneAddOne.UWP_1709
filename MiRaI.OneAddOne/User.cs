@@ -157,8 +157,8 @@ namespace MiRaI.OneAddOne {
 		/// </summary>
 		/// <returns></returns>
 		public static string[] LocalUserList () {
-			//return new string[] { "c1", "p1" };
-			List<string> re = new List<string> ();
+			return new string[] { "c1", "p1" };
+			//List<string> re = new List<string> ();
 			//using (SQLiteConnection conn = new SQLiteConnection (connstr)) {
 			//	using (SQLiteCommand cmd = conn.CreateCommand ()) {
 			//		cmd.CommandText = "select Account from UserSet where delflag == 1";
@@ -172,7 +172,7 @@ namespace MiRaI.OneAddOne {
 			//		}
 			//	}
 			//}
-			return re.ToArray ();
+			//return re.ToArray ();
 		}
 
 		/// <summary>

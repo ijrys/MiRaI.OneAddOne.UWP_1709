@@ -20,19 +20,19 @@
 
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="64px"/>
+			<RowDefinition Height="96"/>
 			<RowDefinition Height="1*"/>
 			<RowDefinition Height="3*"/>
 			<RowDefinition Height="2*"/>
 		</Grid.RowDefinitions>
 
-		<Border Background="732">
-			<TextBlock  Foreground="White" TextAlignment="Center" Padding="0,16" FontSize="24px" Text="登录到1+1"/>
+		<Border Background="#732" >
+			<TextBlock  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48px" Text="登录到1+1"/>
 		</Border>
 		<Border Background="#C84" Grid.Row="1" Grid.RowSpan="3"/>
-		<Button Style="{StaticResource btnStyleYellow}" Width="64px" Height="40px" HorizontalAlignment="Left" Margin="16,0,0,0" Content="返回" Click="btnBack_Click"/>
+		<Button Style="{StaticResource btnOrange}" Width="128px" Height="70px" FontSize="28px" HorizontalAlignment="Left" Margin="16,0,0,0" Content="返回" Click="btnBack_Click"/>
 		<Viewbox Grid.Row="2">
-			<Grid Width="300px" Height="110px">
+			<Grid Width="400px" Height="140px">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="1*"/>
 					<RowDefinition Height="1*"/>
@@ -43,7 +43,7 @@
 					<ColumnDefinition Width="1*"/>
 					<ColumnDefinition Width="1*"/>
 				</Grid.ColumnDefinitions>
-				<ComboBox x:Name="cbxUser" Grid.ColumnSpan="2">
+				<ComboBox x:Name="cbxUser" Grid.ColumnSpan="2" Width="400px">
 					<!--ComboBox.ItemTemplate>
 						<DataTemplate>
 							<TextBlock FontSize="16px" Text="{Binding }"/>
@@ -51,8 +51,8 @@
 					</ComboBox.ItemTemplate>-->
 				</ComboBox>
 				<PasswordBox Grid.Row="1" Grid.ColumnSpan="2" x:Name="txtPwd" FontSize="12px" Padding="1,4"/>
-				<Button Grid.Row="2" Style="{StaticResource btnStyleYellowLight}" FontSize="12px" Content="新用户" Click="btnReg_Click"/>
-				<Button Grid.Row="2" Grid.Column="1" Style="{StaticResource btnStyleYellow}" FontSize="12px" Content="登录" Click="Login_Click"/>
+				<Button Grid.Row="2" Style="{StaticResource btnYellow}" Width="200px" Height="30px" FontSize="12px" Content="新用户" Click="btnReg_Click"/>
+				<Button Grid.Row="2" Grid.Column="1" Style="{StaticResource btnOrange}" Width="200px" Height="30px" FontSize="12px" Content="登录" Click="Login_Click"/>
 
 				<Border x:Name="border" BorderThickness="1" Grid.Row="3" Grid.ColumnSpan="2" BorderBrush="#0F00">
 					<TextBlock x:Name="labMsg"
