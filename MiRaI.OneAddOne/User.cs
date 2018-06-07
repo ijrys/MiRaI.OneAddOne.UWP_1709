@@ -112,8 +112,8 @@ namespace MiRaI.OneAddOne {
 		/// <param name="account">账号</param>
 		/// <param name="pwd">密码</param>
 		/// <returns></returns>
-		public static GetUserRes GetUser (string account, string pwd) {
-			GetUserRes res = new GetUserRes ();
+		public static GetUserRes GetUser(string account, string pwd) {
+			GetUserRes res = new GetUserRes();
 
 			//using (SQLiteConnection conn = new SQLiteConnection (connstr)) {
 			//	using (SQLiteCommand cmd = conn.CreateCommand ()) {
@@ -149,6 +149,34 @@ namespace MiRaI.OneAddOne {
 
 			//	}
 			//}
+			if (account == "c1") {
+				if (pwd == "c1pwd") {
+					res.state = GetUserEnum.ok;
+					res.user = new User() {
+						_nickName = "c1nickname",
+						_id = 1,
+						_isParents = false,
+						_level = 1
+					};
+				} else {
+					res.state = GetUserEnum.pwderror;
+					res.stateDesc = "帐号或密码错误";
+				}
+			} else if (account == "p1") {
+				if (pwd == "p1pwd") {
+					res.state = GetUserEnum.ok;
+					res.user = new User() {
+						_nickName = "p1nickname",
+						_id = 2,
+						_isParents = true,
+						_level = 1
+					};
+				}
+				else {
+					res.state = GetUserEnum.pwderror;
+					res.stateDesc = "帐号或密码错误";
+				}
+			}
 			return res;
 		}
 

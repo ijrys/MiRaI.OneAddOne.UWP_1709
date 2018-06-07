@@ -18,6 +18,9 @@
 		</Path>
 	</Canvas>
 
+	<BitmapImage x:Key="imageSun" UriSource="ms-appx:///imgs/Sun.png"/>
+	<BitmapImage x:Key="imageCloud" UriSource="ms-appx:///imgs/c2.png"/>
+
 	<Style x:Key="pathGress" TargetType="Path">
 		<Setter Property="Fill" Value="#58b107"/>
 		<Setter Property="Stretch" Value="Fill"/>
@@ -34,6 +37,13 @@
 		</Setter>
 	</Style>
 
+
+	<Style x:Key="ImgCloudS" TargetType="Image">
+		<Setter Property="Source" Value="ms-appx:///imgs/c2.png"/>
+	</Style>
+	<Style x:Key="ImgGress" TargetType="Image">
+		<Setter Property="Source" Value="ms-appx:///imgs/Gress.png"/>
+	</Style>
 
 	<Style x:Key="btnStyleBase" TargetType="Button">
 		<Setter Property="BorderBrush" Value="{x:Null}"/>

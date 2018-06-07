@@ -80,7 +80,8 @@ namespace MiRaI.OneAddOne {
 			string pwd = txtPwd.Password;
 			User.GetUserRes res = User.GetUser(uname, pwd);
 			if (res.state == User.GetUserEnum.ok) {
-				_refun.Invoke(res);
+				_refun?.Invoke(res);
+				StoreRoom.NowLoginedUser = res.user;
 				BackPage();
 			}
 			else {

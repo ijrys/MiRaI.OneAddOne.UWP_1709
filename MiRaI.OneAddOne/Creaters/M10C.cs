@@ -7,17 +7,17 @@ using System.Text;
 using System.Windows;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace MiRaI.OneAddOne.Creaters {
 	class M10C : ICreaterUi {
-		private Geometry _background;
+		private ImageSource _background;
 		private string _name;
 
-		public Geometry Background {
+		public ImageSource Background {
 			get {
 				if (_background == null) {
-					object a = Application.Current.Resources["CloudSmall_1"];
-					_background = a as Geometry;
+					_background = new BitmapImage(new Uri("ms-appx:///imgs/c2.png"));
 				}
 				return _background;
 			}

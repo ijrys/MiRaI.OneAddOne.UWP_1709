@@ -115,6 +115,9 @@
     <Compile Include="QuestionPage.xaml.cs">
       <DependentUpon>QuestionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SelecterPage.xaml.cs">
+      <DependentUpon>SelecterPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StoreRoom.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
@@ -135,6 +138,8 @@
     <Content Include="imgs\Gress.svg" />
     <Content Include="imgs\Gress.png" />
     <Content Include="imgs\c2.png" />
+    <Content Include="imgs\Sun.svg" />
+    <Content Include="imgs\Sun.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -162,6 +167,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="QuestionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelecterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

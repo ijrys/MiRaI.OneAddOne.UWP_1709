@@ -8,7 +8,7 @@ using Windows.UI.Xaml.Media;
 
 namespace MiRaI.OneAddOne.Creaters {
 	interface ICreaterUi {
-		Geometry Background { get; }
+		ImageSource Background { get; }
 		string Name { get; }
 		ICreateQuestionAble Creater { get; }
 		string ShowMwssage { get; }
