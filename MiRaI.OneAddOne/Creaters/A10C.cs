@@ -35,7 +35,7 @@ namespace MiRaI.OneAddOne.Creaters {
 		public bool CanSelNum { get { return true; } }
 
 		public QuestionPage.Info DefaultStartInfo { get { return null; } }
-		public SelecterPage.EndTestFun EndTestFun { get { return null; } }
+		public QuestionPage.EndTestAction EndTestFun { get { return null; } }
 
 
 		public A10C() {

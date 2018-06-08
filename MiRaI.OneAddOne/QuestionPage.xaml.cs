@@ -27,7 +27,7 @@ namespace MiRaI.OneAddOne {
 	/// </summary>
 	public sealed partial class QuestionPage : Page {
 
-		public delegate void EndTestAction(Resault res);
+		public delegate void EndTestAction(History res, QuestionPage questionPage);
 
 		public class Info {
 			/// <summary>
@@ -71,84 +71,84 @@ namespace MiRaI.OneAddOne {
 				this.creater = creater;
 			}
 		}
-		public class Resault {
-			/// <summary>
-			/// 正确数
-			/// </summary>
-			public int acNum = 0;
-			/// <summary>
-			/// 错误数
-			/// </summary>
-			public int waNum = 0;
-			/// <summary>
-			/// 用时
-			/// </summary>
-			public int useTime = 0;
-			/// <summary>
-			/// 最大连续正确数
-			/// </summary>
-			public int maxStreaks = 0;
-			/// <summary>
-			/// 测试名
-			/// </summary>
-			public string testName;
-			/// <summary>
-			/// 测试日期
-			/// </summary>
-			public DateTime testDate;
+		//public class Resault {
+		//	/// <summary>
+		//	/// 正确数
+		//	/// </summary>
+		//	public int acNum = 0;
+		//	/// <summary>
+		//	/// 错误数
+		//	/// </summary>
+		//	public int waNum = 0;
+		//	/// <summary>
+		//	/// 用时
+		//	/// </summary>
+		//	public int useTime = 0;
+		//	/// <summary>
+		//	/// 最大连续正确数
+		//	/// </summary>
+		//	public int maxStreaks = 0;
+		//	/// <summary>
+		//	/// 测试名
+		//	/// </summary>
+		//	public string testName;
+		//	/// <summary>
+		//	/// 测试日期
+		//	/// </summary>
+		//	public DateTime testDate;
 
-			/// <summary>
-			/// 正确数的字符串
-			/// </summary>
-			public string AcNumStr { get { return acNum.ToString(); } }
-			/// <summary>
-			/// 错误数的字符串
-			/// </summary>
-			public string WaNumStr { get { return waNum.ToString(); } }
-			/// <summary>
-			/// 总题目数的字符串
-			/// </summary>
-			public string SumStr {
-				get { return (acNum + waNum).ToString(); }
-			}
-			/// <summary>
-			/// 使用时间
-			/// </summary>
-			public int UseTime { get { return useTime; } }
-			/// <summary>
-			/// 最大正确数的字符串
-			/// </summary>
-			public string MaxStreaksStr { get { return maxStreaks.ToString(); } }
-			/// <summary>
-			/// 测试名
-			/// </summary>
-			public string TestName { get { return testName; } }
-			/// <summary>
-			/// 测试日期
-			/// </summary>
-			public DateTime TestDate { get { return testDate; } }
-			/// <summary>
-			/// 正确率的字符串
-			/// </summary>
-			public string AcProportionsStr {
-				get {
-					int sum = acNum + waNum;
-					if (sum == 0) return "N/A";
-					Debug.WriteLine(sum);
-					Debug.WriteLine(acNum);
-					Debug.WriteLine(acNum * 100.0 / sum);
-					return (acNum * 100.0 / sum).ToString("00.00") + "%";
-				}
-			}
-			/// <summary>
-			/// 使用时间的字符串
-			/// </summary>
-			public string UseTimeStr {
-				get {
-					return string.Format("{0} : {1:00}", useTime / 60, useTime % 60);
-				}
-			}
-		}
+		//	/// <summary>
+		//	/// 正确数的字符串
+		//	/// </summary>
+		//	public string AcNumStr { get { return acNum.ToString(); } }
+		//	/// <summary>
+		//	/// 错误数的字符串
+		//	/// </summary>
+		//	public string WaNumStr { get { return waNum.ToString(); } }
+		//	/// <summary>
+		//	/// 总题目数的字符串
+		//	/// </summary>
+		//	public string SumStr {
+		//		get { return (acNum + waNum).ToString(); }
+		//	}
+		//	/// <summary>
+		//	/// 使用时间
+		//	/// </summary>
+		//	public int UseTime { get { return useTime; } }
+		//	/// <summary>
+		//	/// 最大正确数的字符串
+		//	/// </summary>
+		//	public string MaxStreaksStr { get { return maxStreaks.ToString(); } }
+		//	/// <summary>
+		//	/// 测试名
+		//	/// </summary>
+		//	public string TestName { get { return testName; } }
+		//	/// <summary>
+		//	/// 测试日期
+		//	/// </summary>
+		//	public DateTime TestDate { get { return testDate; } }
+		//	/// <summary>
+		//	/// 正确率的字符串
+		//	/// </summary>
+		//	public string AcProportionsStr {
+		//		get {
+		//			int sum = acNum + waNum;
+		//			if (sum == 0) return "N/A";
+		//			Debug.WriteLine(sum);
+		//			Debug.WriteLine(acNum);
+		//			Debug.WriteLine(acNum * 100.0 / sum);
+		//			return (acNum * 100.0 / sum).ToString("00.00") + "%";
+		//		}
+		//	}
+		//	/// <summary>
+		//	/// 使用时间的字符串
+		//	/// </summary>
+		//	public string UseTimeStr {
+		//		get {
+		//			return string.Format("{0} : {1:00}", useTime / 60, useTime % 60);
+		//		}
+		//	}
+		//}
 
 
 		public QuestionPage() {
@@ -426,7 +426,10 @@ namespace MiRaI.OneAddOne {
 
 		#region EndTest
 		EndTestAction etAction;
-		Resault res;
+		History res;
+		/// <summary>
+		/// 结束测试
+		/// </summary>
 		public void EndTest() {
 			lock (runningobj) {
 				if (!running) {
@@ -437,18 +440,20 @@ namespace MiRaI.OneAddOne {
 				running = false;
 
 			}
-			res = new Resault();
+			res = new History();
 
-			res.testDate = DateTime.Now;
-			res.testName = paddingInfo.testName;
-			res.useTime = nowtime;
-			res.waNum = nowwanum;
-			res.acNum = nowacnum;
-			res.maxStreaks = -1;
+			res.TestDate = DateTime.Now;
+			res.TestName = paddingInfo.testName;
+			res.UseTime = nowtime;
+			res.WaNum = nowwanum;
+			res.AcNum = nowacnum;
+			res.MaxStreaks = -1;
 
 			EShowResault();
 		}
-
+		/// <summary>
+		/// 显示测试结果
+		/// </summary>
 		private void EShowResault() {
 			//labShow1.Text = string.Format ("{0} : {1}", res.useTime / 60, res.useTime % 60);
 			//int qnums = res.acNum + res.waNum;
@@ -459,6 +464,7 @@ namespace MiRaI.OneAddOne {
 			ResaultPanel.DataContext = res;
 
 			ResaultPanel.Visibility = Visibility.Visible;
+			if (etAction != null) etAction.Invoke(res, this);
 		}
 
 		private void btnBack_Click(object sender, RoutedEventArgs e) {
@@ -466,9 +472,9 @@ namespace MiRaI.OneAddOne {
 
 			//_contentWindow.NavgateToPage(this);
 			if (paddingInfo.creater.EndTestFun != null) {
-				paddingInfo.creater.EndTestFun.Invoke(res);
+				paddingInfo.creater.EndTestFun.Invoke(res, this);
 			}
-			if (etAction != null) etAction.Invoke(res);
+
 		}
 
 		private void btnEndTest_Click(object sender, RoutedEventArgs e) {
@@ -575,23 +581,68 @@ namespace MiRaI.OneAddOne {
 			Timekeep();
 		}
 
-		public bool DoTest(Info info, EndTestAction action) {
-			if (info == null || action == null || info.creater == null) return false;
-			etAction = action;
-			paddingInfo = info;
-			waques = new List<IQuestionAble>();
+		//public bool DoTest(Info info, EndTestAction action) {
+		//	if (info == null || action == null || info.creater == null) return false;
+		//	etAction = action;
+		//	paddingInfo = info;
+		//	waques = new List<IQuestionAble>();
 
-			DoTestInit();
+		//	DoTestInit();
 
-			//ParentWindow.NavgateToPage(this);
-			txtAnswer.Focus(FocusState.Pointer);
-			return true;
+		//	//ParentWindow.NavgateToPage(this);
+		//	txtAnswer.Focus(FocusState.Pointer);
+		//	return true;
+		//}
+		protected override void OnNavigatedTo(NavigationEventArgs e) {
+			Info info = e.Parameter as Info;
+			if (info != null) {
+				EndTestAction action = info.action;
+				etAction = action;
+				paddingInfo = info;
+				waques = new List<IQuestionAble>();
+
+				DoTestInit();
+
+				//ParentWindow.NavgateToPage(this);
+				txtAnswer.Focus(FocusState.Pointer);
+			}
 		}
-
 
 
 		private void btnSNext_Click(object sender, RoutedEventArgs e) {
 			Judge();
 		}
+
+		#region Message
+		public delegate void MessageFunctionType();
+		public MessageFunctionType btnMsgOked;
+		public MessageFunctionType btnMsgCaned;
+		public MessageFunctionType btnMsgEnded;
+
+		public void ShowMessage(string message) {
+			labMsg.Text = message;
+			MsgShow.Visibility = Visibility.Visible;
+		}
+
+		private void btnMsgCan(object sender, RoutedEventArgs e) {
+			if (btnMsgCaned != null) {
+				btnMsgCaned.Invoke();
+			}
+			if (btnMsgEnded != null) {
+				btnMsgEnded.Invoke();
+			}
+			MsgShow.Visibility = Visibility.Collapsed;
+		}
+
+		private void btnMsgOK(object sender, RoutedEventArgs e) {
+			if (btnMsgOked != null) {
+				btnMsgOked.Invoke();
+			}
+			if (btnMsgEnded != null) {
+				btnMsgEnded.Invoke();
+			}
+			MsgShow.Visibility = Visibility.Collapsed;
+		}
+		#endregion
 	}
 }

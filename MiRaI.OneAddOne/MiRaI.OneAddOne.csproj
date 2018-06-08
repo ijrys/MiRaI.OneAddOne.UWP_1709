@@ -102,6 +102,7 @@
     <Compile Include="Creaters\L1C.cs" />
     <Compile Include="Creaters\L2C.cs" />
     <Compile Include="Creaters\M10C.cs" />
+    <Compile Include="History.cs" />
     <Compile Include="HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>

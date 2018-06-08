@@ -29,7 +29,7 @@ namespace MiRaI.OneAddOne {
 		string _nickName;
 		bool _isParents = false;
 		User[] _children = null;
-		List<QuestionPage.Resault> _history = null;
+		List<History> _history = null;
 
 		/// <summary>
 		/// 获取家长的孩子
@@ -47,10 +47,10 @@ namespace MiRaI.OneAddOne {
 		/// <summary>
 		/// 获取用户历史
 		/// </summary>
-		public IEnumerable<QuestionPage.Resault> History {
+		public IEnumerable<History> History {
 			get {
 				if (_history == null) {
-					_history = new List<QuestionPage.Resault> ();
+					_history = new List<History> ();
 					_history.AddRange (GetHistorys (_id));
 				}
 				return _history.ToArray ();
@@ -99,7 +99,7 @@ namespace MiRaI.OneAddOne {
 		/// 添加一条历史记录
 		/// </summary>
 		/// <param name="res"></param>
-		public void AddHistory (QuestionPage.Resault res) {
+		public void AddHistory (History res) {
 			_history = null;
 			SaveHistory (_id, res);
 			if (HistoryChanged != null) HistoryChanged (this, new object[] { res });
@@ -235,8 +235,8 @@ namespace MiRaI.OneAddOne {
 		/// </summary>
 		/// <param name="id">用户的id</param>
 		/// <returns></returns>
-		private static QuestionPage.Resault[] GetHistorys (int id) {
-			List<QuestionPage.Resault> res = new List<QuestionPage.Resault> ();
+		private static History[] GetHistorys (int id) {
+			List<History> res = new List<History> ();
 			//using (SQLiteConnection conn = new SQLiteConnection (connstr)) {
 			//	using (SQLiteCommand cmd = conn.CreateCommand ()) {
 			//		cmd.CommandText = "select * from HistorySet where uid=@usid";
@@ -267,7 +267,7 @@ namespace MiRaI.OneAddOne {
 		/// </summary>
 		/// <param name="id">用户id</param>
 		/// <param name="res">记录</param>
-		private static void SaveHistory (int id, QuestionPage.Resault res) {
+		private static void SaveHistory (int id, History res) {
 			//using (SQLiteConnection conn = new SQLiteConnection (connstr)) {
 			//	using (SQLiteCommand cmd = conn.CreateCommand ()) {
 			//		cmd.CommandText = "insert into HistorySet(UID, Datetime, Testname, Acnum, Wanum, MaxStreaks, Usetime) values" +

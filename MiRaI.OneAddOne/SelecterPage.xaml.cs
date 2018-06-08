@@ -26,11 +26,15 @@ namespace MiRaI.OneAddOne {
 		public Type FromPage;
 		public User _user;
 
-		public delegate void EndTestFun(QuestionPage.Resault res);
+		public delegate void EndTestFun(History res);
 
 		public class Info {
 			public Type FromPage;
 			public User User;
+			/// <summary>
+			/// 跳转到此页时显示的信息
+			/// </summary>
+			public string Message;
 		}
 
 
@@ -52,19 +56,19 @@ namespace MiRaI.OneAddOne {
 		/// <param name="parentWindow"></param>
 		/// <param name="fromPage"></param>
 		/// <param name="user"></param>
-		private void Select(Type fromPage, User user) {
-			if (_user != null) {
-				_user.LevelChanged -= UserLevelChangedFun;
-			}
-			FromPage = fromPage;
-			_user = user;
+		//private void Select(Type fromPage, User user) {
+		//	if (_user != null) {
+		//		_user.LevelChanged -= UserLevelChangedFun;
+		//	}
+		//	FromPage = fromPage;
+		//	_user = user;
 
-			user.LevelChanged += UserLevelChangedFun;
+		//	user.LevelChanged += UserLevelChangedFun;
 
-			SelList.ItemsSource = StoreRoom.GetCreaters(user);
-			labUserName.Text = user.NickName;
+		//	SelList.ItemsSource = StoreRoom.GetCreaters(user);
+		//	labUserName.Text = user.NickName;
 
-		}
+		//}
 
 		protected override void OnNavigatedTo(NavigationEventArgs e) {
 			if (_user != null) {
@@ -73,17 +77,22 @@ namespace MiRaI.OneAddOne {
 
 			Info info = e.Parameter as Info;
 			if (info == null) {
+				ShowMsg("错误的启动信息！");
 
 			}
 			else {
 				FromPage = info.FromPage;
 				_user = info.User;
+				_user.LevelChanged += UserLevelChangedFun;
+
+				SelList.ItemsSource = StoreRoom.GetCreaters(_user);
+				labUserName.Text = _user.NickName;
+
+				if (info.Message != null) {
+					ShowMsg(info.Message);
+				}
 			}
 
-			_user.LevelChanged += UserLevelChangedFun;
-
-			SelList.ItemsSource = StoreRoom.GetCreaters(_user);
-			labUserName.Text = _user.NickName;
 		}
 
 		/// <summary>
@@ -205,7 +214,7 @@ namespace MiRaI.OneAddOne {
 			if (_nowcreaterUi.CanSelNum) info.questionNum = (int)(sliNum.Value);
 
 			info.testName = _nowcreaterUi.Name;
-			info.action = (QuestionPage.Resault res) => {
+			info.action = (History res, QuestionPage qpage) => {
 				//_contentWindow.NavgateToPage(this);
 				//if (_nowcreaterUi.EndTestFun != null) {
 				//	_nowcreaterUi.EndTestFun.Invoke(res, this);
@@ -213,8 +222,10 @@ namespace MiRaI.OneAddOne {
 				_user.AddHistory(res);
 			};
 
-
-
+			Frame rootFrame = Window.Current.Content as Frame;
+			if (rootFrame != null) {
+				rootFrame.Navigate(typeof(QuestionPage), info);
+			}
 		}
 	}
 }

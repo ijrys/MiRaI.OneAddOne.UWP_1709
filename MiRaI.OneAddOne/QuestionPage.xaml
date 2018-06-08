@@ -173,5 +173,41 @@
 			</Grid>
 		</Border>
 
+		<Grid Grid.ColumnSpan="3" Grid.RowSpan="4"
+			  Visibility="Visible" x:Name="MsgShow"
+				   Background="#9000">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="3*"/>
+				<ColumnDefinition Width="1*"/>
+			</Grid.ColumnDefinitions>
+			<!--<Grid.RowDefinitions>
+				<RowDefinition Height="1*"/>
+				<RowDefinition Height="3*"/>
+				<RowDefinition Height="1*"/>
+			</Grid.RowDefinitions>-->
+			<Viewbox Grid.Column="1" Grid.Row="1">
+				<Grid Width="600" MinHeight="250"
+						BorderBrush="#B85" BorderThickness="8"
+						Background="#FB8">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="2*"/>
+						<RowDefinition Height="1*"/>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="1*"/>
+						<ColumnDefinition Width="1*"/>
+					</Grid.ColumnDefinitions>
+					<TextBlock x:Name="labMsg" Grid.ColumnSpan="2"
+							   Margin="4"
+							   TextWrapping="WrapWholeWords"
+							   FontSize="32px" Text="this is a wonderful day. And my test got a nice "/>
+
+					<Button Grid.Row="2" Grid.Column="0" Width="290" Height="80" FontSize="32px" Style="{StaticResource btnYellow}" Click="btnMsgCan">取消</Button>
+					<Button Grid.Row="2" Grid.Column="1" Width="290" Height="80" FontSize="32px" Style="{StaticResource btnOrange}" Click="btnMsgOK">确定</Button>
+				</Grid>
+			</Viewbox>
+		</Grid>
+
 	</Grid>
 </Page>
