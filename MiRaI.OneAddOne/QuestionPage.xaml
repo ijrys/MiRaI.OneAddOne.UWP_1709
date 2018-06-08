@@ -6,8 +6,172 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+	<Page.Resources>
+		<Storyboard x:Key="ACStory" AutoReverse="False" >
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="gridContent">
+				<EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF00FF00"/>
+				<EasingColorKeyFrame KeyTime="0:0:0.6" Value="#FFFFE699"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="WAStory" AutoReverse="False">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="gridContent">
+				<EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FFFF4C4C"/>
+				<EasingColorKeyFrame KeyTime="0:0:0.6" Value="#FFFFE699"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	</Page.Resources>
+	<Grid x:Name="gridContent" Background="#FFE699">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="1*"/>
+			<RowDefinition Height="3*"/>
+			<RowDefinition Height="2*"/>
+			<RowDefinition Height="2*"/>
+		</Grid.RowDefinitions>
+		<Grid.Resources>
+			<ResourceDictionary>
+				<Style TargetType="TextBlock">
+					<Setter Property="FontSize" Value="24px"/>
+					<Setter Property="FontWeight" Value="Black"/>
+					<Setter Property="HorizontalAlignment" Value="Center"/>
+					<Setter Property="VerticalAlignment" Value="Center"/>
+				</Style>
+				<Style TargetType="TextBox">
+					<Setter Property="FontSize" Value="24px"/>
+					<Setter Property="FontWeight" Value="Black"/>
+				</Style>
+			</ResourceDictionary>
+		</Grid.Resources>
 
-    </Grid>
+
+
+		<Grid x:Name="gridHeadLine" Background="#ED7D31">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="128"></ColumnDefinition>
+				<!--<ColumnDefinition Width="128px"></ColumnDefinition>-->
+				<ColumnDefinition Width="1*"></ColumnDefinition>
+				<ColumnDefinition Width="128"></ColumnDefinition>
+				<ColumnDefinition Width="128"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+
+			<TextBlock x:Name="labTestName" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			<TextBlock Grid.Column="0" x:Name="labFlagShow"  Text="1/20"/>
+			<!--<TextBlock Grid.Column="1" x:Name="labQueNum" Text="20"/>-->
+			<Button Grid.Column="2" Content="交卷" Style="{StaticResource btnWaning}" Width="128" Height="72" FontSize="16px" Click="btnEndTest_Click"/>
+			<TextBlock Grid.Column="3" x:Name="labTime" Text="1:15"/>
+		</Grid>
+
+		<Viewbox Grid.Row="1">
+			<TextBlock Width="800px" Margin="16,0" x:Name="labQuestion" TextAlignment="Center" Text="1 + 1 = ?"/>
+		</Viewbox>
+		<Viewbox Grid.Row="2">
+			<TextBox Width="800px" Margin="16,0" x:Name="txtAnswer"
+				 Background="#0000"
+				 TextChanged="txtAnswer_TextChanged"
+				 KeyDown="txtAnswer_KeyDown"/>
+		</Viewbox>
+		<!--KeyDown="txtAnswer_KeyDown"-->
+		<Viewbox Grid.Row="3">
+			<Grid x:Name="gridSingle" 
+			  Height="192" Width="1280">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="1*"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="1*"/>
+				</Grid.RowDefinitions>
+
+				<Grid.Resources>
+					<ResourceDictionary>
+						<Style x:Key="btnOrangeS" TargetType="Button" BasedOn="{StaticResource btnOrange}">
+							<Setter Property="Width" Value="124"/>
+							<Setter Property="Height" Value="92"/>
+							<Setter Property="FontSize" Value="32"/>
+						</Style>
+
+						<Style x:Key="btnYellowS" TargetType="Button" BasedOn="{StaticResource btnYellow}">
+							<Setter Property="Width" Value="124"/>
+							<Setter Property="Height" Value="92"/>
+							<Setter Property="FontSize" Value="40"/>
+						</Style>
+
+						<Style x:Key="btnWaningS" TargetType="Button" BasedOn="{StaticResource btnWaning}">
+							<Setter Property="Width" Value="124"/>
+							<Setter Property="Height" Value="92"/>
+							<Setter Property="FontSize" Value="32"/>
+						</Style>
+					</ResourceDictionary>
+				</Grid.Resources>
+
+				<Button Style="{StaticResource btnYellowS}" Grid.Column="0" Content="0" Click="btnNumber_Click"/>
+				<Button Style="{StaticResource btnYellowS}" Grid.Column="1" Content="1" Click="btnNumber_Click"/>
+				<Button Style="{StaticResource btnYellowS}" Grid.Column="2" Content="2" Click="btnNumber_Click"/>
+				<Button Style="{StaticResource btnYellowS}" Grid.Column="3" Content="3" Click="btnNumber_Click"/>
+				<Button Style="{StaticResource btnYellowS}" Grid.Column="4" Content="4" Click="btnNumber_Click"/>
+				<Button Style="{StaticResource btnYellowS}" Grid.Column="5" Content="5" Click="btnNumber_Click"/>
+				<Button Style="{StaticResource btnYellowS}" Grid.Column="6" Content="6" Click="btnNumber_Click"/>
+				<Button Style="{StaticResource btnYellowS}" Grid.Column="7" Content="7" Click="btnNumber_Click"/>
+				<Button Style="{StaticResource btnYellowS}" Grid.Column="8" Content="8" Click="btnNumber_Click"/>
+				<Button Style="{StaticResource btnYellowS}" Grid.Column="9" Content="9" Click="btnNumber_Click"/>
+				<!--•+-×÷-->
+				<Button Style="{StaticResource btnOrangeS}" Grid.Row="1" Grid.Column="0" Content="+" Click="btnNumber_Click"/>
+				<Button Style="{StaticResource btnOrangeS}" Grid.Row="1" Grid.Column="1" Content="-" Click="btnNumber_Click"/>
+				<Button Style="{StaticResource btnOrangeS}" Grid.Row="1" Grid.Column="2" Content="×" Click="btnNumber_Click"/>
+				<Button Style="{StaticResource btnOrangeS}" Grid.Row="1" Grid.Column="3" Content="÷" Click="btnNumber_Click"/>
+				<Button Style="{StaticResource btnOrangeS}" Grid.Row="1" Grid.Column="4" Content="•" Click="btnNumber_Click"/>
+				<Button Style="{StaticResource btnOrangeS}" Grid.Row="1" Grid.Column="5" Content="(" Click="btnNumber_Click"/>
+				<Button Style="{StaticResource btnOrangeS}" Grid.Row="1" Grid.Column="6" Content=")" Click="btnNumber_Click"/>
+
+
+
+				<Button Style="{StaticResource btnWaningS}" Grid.Row="1" Grid.Column="7" Content="&lt;-" Click="btnDel_Click"/>
+
+				<Button Style="{StaticResource btnOrangeS}" Width="252" Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="2" Content="下一题" Click="btnSNext_Click"/>
+			</Grid>
+		</Viewbox>
+		<Border x:Name="ResaultPanel" Visibility="Collapsed" Grid.RowSpan="4" Background="#FFE699">
+			<Grid Width="1280" Height="256px">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="1*"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="16"/>
+					<RowDefinition Height="1*"/>
+				</Grid.RowDefinitions>
+
+				<TextBlock Grid.Column="1" Grid.Row="0">用时：</TextBlock>
+				<TextBlock Grid.Column="1" Grid.Row="1">做题总数：</TextBlock>
+				<TextBlock Grid.Column="1" Grid.Row="2">正确数：</TextBlock>
+				<TextBlock Grid.Column="1" Grid.Row="3">错误数：</TextBlock>
+				<TextBlock Grid.Column="1" Grid.Row="4">正确率：</TextBlock>
+
+				<TextBlock x:Name="labShow1" Grid.Column="2" Grid.Row="0" Text="{Binding UseTimeStr}"/>
+				<TextBlock x:Name="labShow2" Grid.Column="2" Grid.Row="1" Text="{Binding SumStr}"/>
+				<TextBlock x:Name="labShow3" Grid.Column="2" Grid.Row="2" Text="{Binding AcNumStr}"/>
+				<TextBlock x:Name="labShow4" Grid.Column="2" Grid.Row="3" Text="{Binding WaNumStr}"/>
+				<TextBlock x:Name="labShow5" Grid.Column="2" Grid.Row="4" Text="{Binding AcProportionsStr}"/>
+
+				<Button Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Style="{StaticResource btnOrange}" Content="返回" Click="btnBack_Click"/>
+			</Grid>
+		</Border>
+
+	</Grid>
 </Page>

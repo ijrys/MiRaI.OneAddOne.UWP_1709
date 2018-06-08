@@ -7,14 +7,14 @@ using MiRaI.OoeAddOne.BasicType;
 using Windows.UI.Xaml.Media;
 
 namespace MiRaI.OneAddOne.Creaters {
-	interface ICreaterUi {
+	public interface ICreaterUi {
 		ImageSource Background { get; }
 		string Name { get; }
 		ICreateQuestionAble Creater { get; }
 		string ShowMwssage { get; }
 		bool CanSelNum { get; }
-		//QuestionPage.Info DefaultStartInfo { get; }
+		QuestionPage.Info DefaultStartInfo { get; }
 
-		//SelecterPage.EndTestFun EndTestFun { get; }
+		SelecterPage.EndTestFun EndTestFun { get; }
 	}
 }

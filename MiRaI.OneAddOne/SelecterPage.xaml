@@ -6,18 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-	<Page.Resources>
-		<ResourceDictionary>
-
-
-		</ResourceDictionary>
-	</Page.Resources>
-
 	<Grid Background="#43CEFF">
 		<Grid.RowDefinitions>
-			<RowDefinition Height="128"/>
-			<RowDefinition Height="128"/>
+			<RowDefinition Height="96"/>
+			<RowDefinition Height="96"/>
 			<RowDefinition Height="1*"/>
 			<RowDefinition Height="1*"/>
 		</Grid.RowDefinitions>

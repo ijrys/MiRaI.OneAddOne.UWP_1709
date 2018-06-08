@@ -26,7 +26,7 @@ namespace MiRaI.OneAddOne {
 		public Type FromPage;
 		public User _user;
 
-		public delegate void EndTestFun(QuestionPage.Resault res, SelecterPage cont);
+		public delegate void EndTestFun(QuestionPage.Resault res);
 
 		public class Info {
 			public Type FromPage;
@@ -197,21 +197,24 @@ namespace MiRaI.OneAddOne {
 
 		private void StartTest() {
 			//QuestionPage qpage = new QuestionPage(_contentWindow);
-			//QuestionPage.Info info = _nowcreaterUi.DefaultStartInfo;
-			//if (info == null) {
-			//	info = new QuestionPage.Info(_nowcreaterUi.Creater);
-			//	info.maxTime = 3600;
-			//}
-			//if (_nowcreaterUi.CanSelNum) info.questionNum = (int)(sliNum.Value);
+			QuestionPage.Info info = _nowcreaterUi.DefaultStartInfo;
+			if (info == null) {
+				info = new QuestionPage.Info(_nowcreaterUi);
+				info.maxTime = 3600;
+			}
+			if (_nowcreaterUi.CanSelNum) info.questionNum = (int)(sliNum.Value);
 
-			//info.testName = _nowcreaterUi.Name;
-			//qpage.DoTest(info, (QuestionPage.Resault res) => {
-			//	_contentWindow.NavgateToPage(this);
-			//	if (_nowcreaterUi.EndTestFun != null) {
-			//		_nowcreaterUi.EndTestFun.Invoke(res, this);
-			//	}
-			//	_user.AddHistory(res);
-			//});
+			info.testName = _nowcreaterUi.Name;
+			info.action = (QuestionPage.Resault res) => {
+				//_contentWindow.NavgateToPage(this);
+				//if (_nowcreaterUi.EndTestFun != null) {
+				//	_nowcreaterUi.EndTestFun.Invoke(res, this);
+				//}
+				_user.AddHistory(res);
+			};
+
+
+
 		}
 	}
 }

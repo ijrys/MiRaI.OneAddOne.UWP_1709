@@ -34,9 +34,9 @@ namespace MiRaI.OneAddOne.Creaters {
 
 		public bool CanSelNum { get { return true; } }
 
-		//public QuestionPage.Info DefaultStartInfo { get { return null; } }
+		public QuestionPage.Info DefaultStartInfo { get { return null; } }
 
-		//public SelecterPage.EndTestFun EndTestFun { get { return null; } }
+		public SelecterPage.EndTestFun EndTestFun { get { return null; } }
 
 		public A100C() {
 			//_background = Application.Current.Resources["CloudSmall_1"] as Geometry;

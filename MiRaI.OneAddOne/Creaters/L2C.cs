@@ -31,19 +31,20 @@ namespace MiRaI.OneAddOne.Creaters {
 		public string ShowMwssage { get { return "过关条件：1分组内答对10道即可解锁新的关卡"; } }
 
 		public bool CanSelNum { get { return false; } }
-		//public SelecterPage.EndTestFun EndTestFun {
-		//	get {
-		//		return (QuestionPage.Resault res, SelecterPage cont) => {
+		public SelecterPage.EndTestFun EndTestFun {
+			get {
+				return (QuestionPage.Resault res, SelecterPage cont) => {
 
-		//			if (res.acNum >= 1) {
-		//				cont.ShowMsg ("恭喜过关");
-		//				cont._user.ChangeLevel (cont._user.Level + 1);
-		//			} else {
-		//				cont.ShowMsg ("真遗憾，下次再战吧");
-		//			}
-		//		};
-		//	}
-		//}
+					if (res.acNum >= 1) {
+						cont.ShowMsg("恭喜过关");
+						cont._user.ChangeLevel(cont._user.Level + 1);
+					}
+					else {
+						cont.ShowMsg("真遗憾，下次再战吧");
+					}
+				};
+			}
+		}
 
 		public QuestionPage.Info DefaultStartInfo {
 			get {
