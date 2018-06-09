@@ -124,17 +124,8 @@
 				<ColumnDefinition Width="3*"/>
 				<ColumnDefinition Width="1*"/>
 			</Grid.ColumnDefinitions>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="1*"/>
-				<RowDefinition Height="3*"/>
-				<RowDefinition Height="1*"/>
-			</Grid.RowDefinitions>
-			<!--<Viewbox Grid.Column="1" Grid.Row="1">-->
-			<!--数量选择-->
-
-
 			<Viewbox x:Name="MsgShow" Grid.Column="1" Grid.Row="1">
-				<Grid Width="600" Height="250"
+				<Grid Width="600" MinHeight="250"
 						BorderBrush="#B85" BorderThickness="8"
 						Background="#FB8">
 					<Grid.RowDefinitions>
@@ -146,13 +137,14 @@
 						<ColumnDefinition Width="1*"/>
 					</Grid.ColumnDefinitions>
 					<TextBlock x:Name="labMsg" Grid.ColumnSpan="2" VerticalAlignment="Center"
-							   Padding="4" FontSize="32px" Text="12345645678321456687"/>
+							   Margin="8 16" FontSize="32px" TextWrapping="WrapWholeWords"
+							   Text="这是一个比较长的测试文本，他有多少字呢？让我们来数一数：1，2，3，4，5，6，……好多字啊！但是这么多的字还么有四行，所以我增加了这最后一句话"/>
 
 					<Button Grid.Row="2" Grid.Column="0" Width="290" Height="80" FontSize="32px" Style="{StaticResource btnYellow}" Click="btnMsgCan">取消</Button>
 					<Button Grid.Row="2" Grid.Column="1" Width="290" Height="80" FontSize="32px" Style="{StaticResource btnOrange}" Click="btnMsgOK">确定</Button>
 				</Grid>
 			</Viewbox>
-			<Viewbox x:Name="NumSel" Grid.Column="1" Grid.Row="1">
+			<Viewbox x:Name="NumSel" Grid.Column="1" Grid.Row="1" Visibility="Collapsed">
 				<Grid  Width="600" Height="250"
 					  Background="#FB8" BorderBrush="#B85" BorderThickness="3">
 					<Grid.RowDefinitions>

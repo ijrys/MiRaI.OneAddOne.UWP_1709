@@ -20,6 +20,7 @@
 
 	<BitmapImage x:Key="imageSun" UriSource="ms-appx:///imgs/Sun.png"/>
 	<BitmapImage x:Key="imageCloud" UriSource="ms-appx:///imgs/c2.png"/>
+	<BitmapImage x:Key="imageGress" UriSource="ms-appx:///imgs/Gress.png"/>
 
 	<Style x:Key="pathGress" TargetType="Path">
 		<Setter Property="Fill" Value="#58b107"/>

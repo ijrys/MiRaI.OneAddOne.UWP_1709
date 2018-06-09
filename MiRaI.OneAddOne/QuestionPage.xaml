@@ -139,40 +139,44 @@
 				<Button Style="{StaticResource btnOrangeS}" Width="252" Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="2" Content="下一题" Click="btnSNext_Click"/>
 			</Grid>
 		</Viewbox>
-		<Border x:Name="ResaultPanel" Visibility="Collapsed" Grid.RowSpan="4" Background="#FFE699">
-			<Grid Width="1280" Height="256px">
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="1*"/>
-					<ColumnDefinition Width="1*"/>
-					<ColumnDefinition Width="1*"/>
-					<ColumnDefinition Width="1*"/>
-				</Grid.ColumnDefinitions>
-				<Grid.RowDefinitions>
-					<RowDefinition Height="1*"/>
-					<RowDefinition Height="1*"/>
-					<RowDefinition Height="1*"/>
-					<RowDefinition Height="1*"/>
-					<RowDefinition Height="1*"/>
-					<RowDefinition Height="16"/>
-					<RowDefinition Height="1*"/>
-				</Grid.RowDefinitions>
+		<Border x:Name="ResaultPanel" Grid.RowSpan="4" Visibility="Visible" Background="#FFE699">
+			<Viewbox>
+				<Grid Width="1000" Height="256px">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="1*"/>
+						<ColumnDefinition Width="1*"/>
+						<ColumnDefinition Width="1*"/>
+						<ColumnDefinition Width="1*"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="1*"/>
+						<RowDefinition Height="1*"/>
+						<RowDefinition Height="1*"/>
+						<RowDefinition Height="1*"/>
+						<RowDefinition Height="1*"/>
+						<RowDefinition Height="16"/>
+						<RowDefinition Height="1*"/>
+					</Grid.RowDefinitions>
 
-				<TextBlock Grid.Column="1" Grid.Row="0">用时：</TextBlock>
-				<TextBlock Grid.Column="1" Grid.Row="1">做题总数：</TextBlock>
-				<TextBlock Grid.Column="1" Grid.Row="2">正确数：</TextBlock>
-				<TextBlock Grid.Column="1" Grid.Row="3">错误数：</TextBlock>
-				<TextBlock Grid.Column="1" Grid.Row="4">正确率：</TextBlock>
+					<TextBlock Grid.Column="1" Grid.Row="0">用时：</TextBlock>
+					<TextBlock Grid.Column="1" Grid.Row="1">做题总数：</TextBlock>
+					<TextBlock Grid.Column="1" Grid.Row="2">正确数：</TextBlock>
+					<TextBlock Grid.Column="1" Grid.Row="3">错误数：</TextBlock>
+					<TextBlock Grid.Column="1" Grid.Row="4">正确率：</TextBlock>
 
-				<TextBlock x:Name="labShow1" Grid.Column="2" Grid.Row="0" Text="{Binding UseTimeStr}"/>
-				<TextBlock x:Name="labShow2" Grid.Column="2" Grid.Row="1" Text="{Binding SumStr}"/>
-				<TextBlock x:Name="labShow3" Grid.Column="2" Grid.Row="2" Text="{Binding AcNumStr}"/>
-				<TextBlock x:Name="labShow4" Grid.Column="2" Grid.Row="3" Text="{Binding WaNumStr}"/>
-				<TextBlock x:Name="labShow5" Grid.Column="2" Grid.Row="4" Text="{Binding AcProportionsStr}"/>
+					<TextBlock x:Name="labShow1" Grid.Column="2" Grid.Row="0" Text="{Binding UseTimeStr}"/>
+					<TextBlock x:Name="labShow2" Grid.Column="2" Grid.Row="1" Text="{Binding SumStr}"/>
+					<TextBlock x:Name="labShow3" Grid.Column="2" Grid.Row="2" Text="{Binding AcNumStr}"/>
+					<TextBlock x:Name="labShow4" Grid.Column="2" Grid.Row="3" Text="{Binding WaNumStr}"/>
+					<TextBlock x:Name="labShow5" Grid.Column="2" Grid.Row="4" Text="{Binding AcProportionsStr}"/>
 
-				<Button Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Style="{StaticResource btnOrange}" Content="返回" Click="btnBack_Click"/>
-			</Grid>
+					<Button Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2"
+						Style="{StaticResource btnOrange}" Width="480" Height="32"
+						Content="返回" Click="btnBack_Click"/>
+				</Grid>
+			</Viewbox>
+
 		</Border>
-
 		<Grid Grid.ColumnSpan="3" Grid.RowSpan="4"
 			  Visibility="Visible" x:Name="MsgShow"
 				   Background="#9000">
@@ -181,11 +185,6 @@
 				<ColumnDefinition Width="3*"/>
 				<ColumnDefinition Width="1*"/>
 			</Grid.ColumnDefinitions>
-			<!--<Grid.RowDefinitions>
-				<RowDefinition Height="1*"/>
-				<RowDefinition Height="3*"/>
-				<RowDefinition Height="1*"/>
-			</Grid.RowDefinitions>-->
 			<Viewbox Grid.Column="1" Grid.Row="1">
 				<Grid Width="600" MinHeight="250"
 						BorderBrush="#B85" BorderThickness="8"
@@ -199,7 +198,7 @@
 						<ColumnDefinition Width="1*"/>
 					</Grid.ColumnDefinitions>
 					<TextBlock x:Name="labMsg" Grid.ColumnSpan="2"
-							   Margin="4"
+							   Margin="8 16"
 							   TextWrapping="WrapWholeWords"
 							   FontSize="32px" Text="this is a wonderful day. And my test got a nice "/>
 

@@ -65,8 +65,11 @@ namespace MiRaI.OneAddOne {
 		}
 
 		private void btnHistory_Click(object sender, RoutedEventArgs e) {
-			//User us = StoreRoom.NowLoginedUser;
-			//HistoryPage.Show(ParentWindow, this, us);
+			User us = StoreRoom.NowLoginedUser;
+			Frame rootFrame = Window.Current.Content as Frame;
+			if (rootFrame == null) return;
+
+			rootFrame.Navigate(typeof(HistoryPage), us);
 		}
 
 		private void btnStart_Click(object sender, RoutedEventArgs e) {

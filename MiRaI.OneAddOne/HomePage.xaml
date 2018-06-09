@@ -27,7 +27,7 @@
 		</Viewbox>
 
 		<Image Grid.Row="1" Grid.ColumnSpan="3" Source="ms-appx:///imgs/c1.png"/>
-		<Image Grid.Row="3" Grid.RowSpan="2" Stretch="Fill" Source="ms-appx:///imgs/Gress.png"/>
+		<Image Grid.Row="3" Grid.RowSpan="2" Stretch="Fill" Source="{StaticResource imageGress}"/>
 
 		<Viewbox Grid.Row="2" Grid.RowSpan="2">
 			<Grid Width="300px" Height="130px">

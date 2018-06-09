@@ -399,8 +399,8 @@ namespace MiRaI.OneAddOne {
 			labTime.Text = string.Format("{0} : {1}", nowtime / 60, nowtime % 60);
 		}
 
-		private void TimeKeepDoFun() {
-			Task.Delay(1000);
+		private async void TimeKeepDoFun() {
+			await Task.Delay(1000);
 			lock (runningobj) {
 				if (!running) return;
 			}
@@ -421,6 +421,7 @@ namespace MiRaI.OneAddOne {
 			//Thread timeThread = new Thread(TimeKeepDoFun);
 			//timeThread.Start();
 			TimeKeepDoFun();
+			nowtime = 0;
 		}
 		#endregion
 
@@ -455,26 +456,19 @@ namespace MiRaI.OneAddOne {
 		/// 显示测试结果
 		/// </summary>
 		private void EShowResault() {
-			//labShow1.Text = string.Format ("{0} : {1}", res.useTime / 60, res.useTime % 60);
-			//int qnums = res.acNum + res.waNum;
-			//labShow2.Text = qnums.ToString ();
-			//labShow3.Text = res.acNum.ToString ();
-			//labShow4.Text = res.waNum.ToString ();
-			//labShow5.Text = (res.acNum * 100.0 / qnums).ToString ("00.0");
 			ResaultPanel.DataContext = res;
 
 			ResaultPanel.Visibility = Visibility.Visible;
 			if (etAction != null) etAction.Invoke(res, this);
+			if (paddingInfo.creater.EndTestFun != null) {
+				paddingInfo.creater.EndTestFun.Invoke(res, this);
+			}
 		}
 
 		private void btnBack_Click(object sender, RoutedEventArgs e) {
 			Window.Current.Closed -= Current_Closed;
-
-			//_contentWindow.NavgateToPage(this);
-			if (paddingInfo.creater.EndTestFun != null) {
-				paddingInfo.creater.EndTestFun.Invoke(res, this);
-			}
-
+			Frame rootFrame = Window.Current.Content as Frame;
+			if (rootFrame != null && rootFrame.CanGoBack) rootFrame.GoBack();
 		}
 
 		private void btnEndTest_Click(object sender, RoutedEventArgs e) {
@@ -571,28 +565,22 @@ namespace MiRaI.OneAddOne {
 			WaStory = Resources["WAStory"] as Storyboard;
 
 
-			waques = new List<IQuestionAble>();
-			nowques = paddingInfo.creater.Creater.NextQuestion();
-			labQuestion.Text = nowques.Description;
-			txtAnswer.Text = null;
-			labTestName.Text = paddingInfo.testName;
+			try {
+				waques = new List<IQuestionAble>();
+				nowques = paddingInfo.creater.Creater.NextQuestion();
+				labQuestion.Text = nowques.Description;
+				txtAnswer.Text = "";
+				labTestName.Text = paddingInfo.testName;
 
-			FreshFlags();
-			Timekeep();
+				FreshFlags();
+				Timekeep();
+			}
+			catch (Exception ex) {
+				Debug.WriteLine(ex.Message);
+			}
 		}
 
-		//public bool DoTest(Info info, EndTestAction action) {
-		//	if (info == null || action == null || info.creater == null) return false;
-		//	etAction = action;
-		//	paddingInfo = info;
-		//	waques = new List<IQuestionAble>();
 
-		//	DoTestInit();
-
-		//	//ParentWindow.NavgateToPage(this);
-		//	txtAnswer.Focus(FocusState.Pointer);
-		//	return true;
-		//}
 		protected override void OnNavigatedTo(NavigationEventArgs e) {
 			Info info = e.Parameter as Info;
 			if (info != null) {
