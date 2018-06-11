@@ -51,7 +51,7 @@ namespace MiRaI.OneAddOne {
 
 
 		protected override void OnNavigatedTo(NavigationEventArgs e) {
-			base.OnNavigatedTo(e);
+			//base.OnNavigatedTo(e);
 			cbxUser.ItemsSource = User.LocalUserList();
 			txtPwd.Password = "";
 			labMsg.Text = "";

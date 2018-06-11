@@ -5,8 +5,7 @@
     xmlns:local="using:MiRaI.OneAddOne"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-	xmlns:svg="using:Mntone.SvgForXaml.UI.Xaml">
+    mc:Ignorable="d">
 
 	<Grid Background="#43CEFF">
 		<Grid.RowDefinitions>

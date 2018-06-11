@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace MiRaI.OneAddOne {
 	public class User {
@@ -8,7 +9,7 @@ namespace MiRaI.OneAddOne {
 		public event ProChangeFun LevelChanged;
 		public event ProChangeFun HistoryChanged;
 
-		private static string connstr = "Filename=Data/db.db";
+		private static string connstr = "Filename=sqliteSample.db";//"Data Source=./Data/db.db";
 
 		public enum GetUserEnum {
 			ok,
@@ -190,18 +191,23 @@ namespace MiRaI.OneAddOne {
 		public static string[] LocalUserList() {
 			//return new string[] { "c1", "p1" };
 			List<string> re = new List<string>();
-			using (SqliteConnection conn = new SqliteConnection(connstr)) {
-				using (SqliteCommand cmd = conn.CreateCommand()) {
-					cmd.CommandText = "select Account from UserSet where delflag == 1";
+			try {
+				using (SqliteConnection conn = new SqliteConnection(connstr)) {
+					using (SqliteCommand cmd = conn.CreateCommand()) {
+						cmd.CommandText = "select Account from [UserSet] where delflag == 1";
 
-					conn.Open();
-					using (SqliteDataReader reader = cmd.ExecuteReader()) {
-						while (reader.Read()) {
-							string nm = reader["Account"].ToString();
-							re.Add(nm);
+						conn.Open();
+						using (SqliteDataReader reader = cmd.ExecuteReader()) {
+							while (reader.Read()) {
+								string nm = reader["Account"].ToString();
+								re.Add(nm);
+							}
 						}
 					}
 				}
+			}
+			catch (Exception ex) {
+				Debug.WriteLine(ex.Message);
 			}
 			return re.ToArray();
 		}
@@ -328,28 +334,29 @@ namespace MiRaI.OneAddOne {
 		/// <param name="isp"></param>
 		/// <returns></returns>
 		public static bool CreateUser(string account, string pwd, string nickname, bool isp) {
-			//using (SqliteConnection conn = new SqliteConnection (connstr)) {
-			//	using (SqliteCommand cmd = conn.CreateCommand ()) {
-			//		cmd.CommandText = "insert into UserSet (Account, Password, Nickname, IsParents, level, delflag) values (@account, @pwd, @nickname, @ispar, @level, 1)";
+			using (SqliteConnection conn = new SqliteConnection(connstr)) {
+				using (SqliteCommand cmd = conn.CreateCommand()) {
+					cmd.CommandText = "insert into UserSet (Account, Password, Nickname, IsParents, level, delflag) values (@account, @pwd, @nickname, @ispar, @level, 1)";
 
-			//		cmd.Parameters.AddWithValue ("@account", account);
-			//		cmd.Parameters.AddWithValue ("@pwd", pwd);
-			//		cmd.Parameters.AddWithValue ("@nickname", nickname);
-			//		cmd.Parameters.AddWithValue ("@ispar", isp);
-			//		if (isp) {
-			//			cmd.Parameters.AddWithValue ("@level", -1);
-			//		} else {
-			//			cmd.Parameters.AddWithValue ("@level", 1);
-			//		}
+					cmd.Parameters.AddWithValue("@account", account);
+					cmd.Parameters.AddWithValue("@pwd", pwd);
+					cmd.Parameters.AddWithValue("@nickname", nickname);
+					cmd.Parameters.AddWithValue("@ispar", isp);
+					if (isp) {
+						cmd.Parameters.AddWithValue("@level", -1);
+					}
+					else {
+						cmd.Parameters.AddWithValue("@level", 1);
+					}
 
-			//		conn.Open ();
+					conn.Open();
 
-			//		int inr = cmd.ExecuteNonQuery ();
-			//		return (inr == 1);
+					int inr = cmd.ExecuteNonQuery();
+					return (inr == 1);
 
-			//	}
-			//}
-			return false;
+				}
+			}
+			//return false;
 		}
 		#endregion
 	}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -38,6 +39,7 @@ namespace MiRaI.OneAddOne {
 				localSettings.Values["guid"] = uid.ToString();
 				AppDatas.machineGuid = uid;
 			}
+			AppDatas.CreateDataBase();
 			#endregion
 		}
 
@@ -84,7 +86,9 @@ namespace MiRaI.OneAddOne {
 		///<param name="sender">导航失败的框架</param>
 		///<param name="e">有关导航失败的详细信息</param>
 		void OnNavigationFailed(object sender, NavigationFailedEventArgs e) {
-			throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
+			//throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
+
+			Debug.WriteLine(e.Exception.Message);
 		}
 
 		/// <summary>
