@@ -19,17 +19,18 @@
 
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="64px"/>
+			<RowDefinition Height="64"/>
 			<RowDefinition Height="1*"/>
 			<RowDefinition Height="5*"/>
 			<RowDefinition Height="2*"/>
 		</Grid.RowDefinitions>
-
-		<TextBlock Foreground="White" TextAlignment="Center" Padding="0,16" FontSize="24px" Text="注册新用户"/>
+		<Border Background="#732">
+			<TextBlock Foreground="White" TextAlignment="Center" Padding="0,16" FontSize="24px" Text="注册新用户"/>
+		</Border>
 		<Border Background="#C84" Grid.Row="1" Grid.RowSpan="3"/>
-		<Button Style="{StaticResource btnStyleYellow}" Width="64px" Height="40px" HorizontalAlignment="Left" Margin="16,0,0,0" Content="返回" Click="btnBack_Click"/>
+		<Button Style="{StaticResource btnOrange}" Width="64px" Height="40px" HorizontalAlignment="Left" Margin="16,0,0,0" Content="返回" Click="btnBack_Click"/>
 		<Viewbox Grid.Row="2">
-			<Grid Width="300px" Height="180px">
+			<Grid Width="400px" Height="200px">
 				<Grid.Resources>
 					<ResourceDictionary>
 						<Style TargetType="TextBox">
@@ -45,13 +46,9 @@
 					<RowDefinition Height="1*"/>
 					<RowDefinition Height="1*"/>
 				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="1*"/>
-					<!--<ColumnDefinition Width="1*"/>-->
-				</Grid.ColumnDefinitions>
-				<TextBox x:Name="txtAccount" Grid.Row="0" Grid.ColumnSpan="2"/>
-				<TextBox x:Name="txtNickname" Grid.Row="1" Grid.ColumnSpan="2"/>
-				<TextBox x:Name="txtPWD" Grid.Row="2" Grid.ColumnSpan="2"/>
+				<TextBox x:Name="txtAccount" Grid.Row="0" Grid.ColumnSpan="2" PlaceholderText="用户名"/>
+				<TextBox x:Name="txtNickname" Grid.Row="1" Grid.ColumnSpan="2" PlaceholderText="密码"/>
+				<TextBox x:Name="txtPWD" Grid.Row="2" Grid.ColumnSpan="2" PlaceholderText="再输入一遍密码"/>
 
 				<Border Grid.Row="3">
 					<Grid>
@@ -64,7 +61,7 @@
 					</Grid>
 				</Border>
 
-				<Button Content="注册" Style="{StaticResource btnStyleYellow}" Grid.Row="4" Grid.ColumnSpan="2" Click="btnReg_Click"/>
+				<Button Content="注册" Style="{StaticResource btnOrange}" Width="290" Grid.Row="4" Grid.ColumnSpan="2" Click="btnReg_Click"/>
 
 				<Border x:Name="border" BorderThickness="1" Grid.Row="5" Grid.ColumnSpan="2" BorderBrush="#0F00">
 					<TextBlock x:Name="labMsg"
@@ -75,5 +72,33 @@
 			</Grid>
 		</Viewbox>
 
+
+		<Grid Grid.RowSpan="4"
+			  Visibility="Collapsed" x:Name="MsgBorder"
+			  Background="#9000">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="3*"/>
+				<ColumnDefinition Width="1*"/>
+			</Grid.ColumnDefinitions>
+			<Viewbox x:Name="MsgShow" Grid.Column="1" Grid.Row="1">
+				<Grid Width="600" MinHeight="250"
+						BorderBrush="#B85" BorderThickness="8"
+						Background="#FB8">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="2*"/>
+						<RowDefinition Height="1*"/>
+					</Grid.RowDefinitions>
+
+					<TextBlock Grid.ColumnSpan="2"
+							   VerticalAlignment="Center"
+							   HorizontalAlignment="Center"
+							   FontSize="32px"
+							   Text="注册成功"/>
+
+					<Button Grid.Row="2" Grid.Column="1" Width="290" Height="80" FontSize="32px" Style="{StaticResource btnOrange}" Click="btnMsgOK">确定</Button>
+				</Grid>
+			</Viewbox>
+		</Grid>
 	</Grid>
 </Page>

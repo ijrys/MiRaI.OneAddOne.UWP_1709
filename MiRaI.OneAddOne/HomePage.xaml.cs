@@ -46,12 +46,7 @@ namespace MiRaI.OneAddOne {
 		private void btnHelp_Click(object sender, RoutedEventArgs e) {
 
 		}
-		//private void UserLoginFun(User.GetUserRes res) {
-		//	StoreRoom.NowLoginedUser = res.user;
-		//	labUserName.Text = res.user.NickName;
-		//	btnStart.Visibility = Visibility.Visible;
-		//	btnHistory.Visibility = Visibility.Visible;
-		//}
+
 
 		private void btnLogin_Click(object sender, RoutedEventArgs e) {
 			//LoginPage lp = new LoginPage();

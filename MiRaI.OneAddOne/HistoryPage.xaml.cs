@@ -22,6 +22,14 @@ namespace MiRaI.OneAddOne {
 	public sealed partial class HistoryPage : Page {
 		public HistoryPage() {
 			this.InitializeComponent();
+			this.SizeChanged += HistoryPage_SizeChanged;
+		}
+
+		private void HistoryPage_SizeChanged(object sender, SizeChangedEventArgs e) {
+			double w = e.NewSize.Width / 7;
+			width1.Width = w * 2 - 4;
+			width2.Width = w * 5 - 4;
+
 		}
 
 		protected override void OnNavigatedTo(NavigationEventArgs e) {
@@ -66,5 +74,6 @@ namespace MiRaI.OneAddOne {
 			Frame rootFrame = Window.Current.Content as Frame;
 			if (rootFrame != null && rootFrame.CanGoBack) rootFrame.GoBack();
 		}
+
 	}
 }

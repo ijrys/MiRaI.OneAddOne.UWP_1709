@@ -21,6 +21,8 @@
 			<RowDefinition Height="1*"/>
 			<RowDefinition Height="48"/>
 		</Grid.RowDefinitions>
+		<TextBox x:Name="width1" Visibility="Collapsed"/>
+		<TextBox x:Name="width2" Visibility="Collapsed"/>
 		<Image Source="{StaticResource imageCloud}"/>
 		
 		<Viewbox Grid.Column="3" Grid.RowSpan="2">
@@ -55,7 +57,7 @@
 			</ListBox.Resources>
 			<ListBox.ItemTemplate>
 				<DataTemplate>
-					<TextBlock Width="{Binding ElementName=listChild, Path=ActualWidth}" Style="{StaticResource lcTextBlockStyle}" Text="{Binding NickName}"/>
+					<TextBlock Width="{Binding ElementName=width1, Path=Width}" Style="{StaticResource lcTextBlockStyle}" Text="{Binding NickName}"/>
 				</DataTemplate>
 			</ListBox.ItemTemplate>
 		</ListBox>
@@ -105,7 +107,7 @@
 				</ListBox.Resources>
 				<ListBox.ItemTemplate>
 					<DataTemplate>
-						<Grid Width="{Binding ElementName=gridHead, Path=ActualWidth}"
+						<Grid Width="{Binding ElementName=width2, Path=Width}"
 						      Margin="-8, 0, 0, 0"
 						      Height="32px">
 							<Grid.ColumnDefinitions>
@@ -151,7 +153,7 @@
 				</Path>
 				<!--todo-->
 				<Button x:Name="btnHelp" Content="Back"
-						Style="{StaticResource btnStyleBase}"
+						Style="{StaticResource btnAlpha}"
 						Width="68" Height="48"
 						RenderTransformOrigin="0.5,0.5"
 						Canvas.Left="11" Canvas.Top="33"

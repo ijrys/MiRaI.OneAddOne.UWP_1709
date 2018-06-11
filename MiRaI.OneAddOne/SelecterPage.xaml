@@ -105,16 +105,53 @@
 					</Grid>
 				</DataTemplate>
 			</ListBox.ItemTemplate>
-			<Grid Width="{Binding ElementName=StyleWidth, Path=Width, Mode=OneWay}" Height="64px">
+			<!--<Grid Width="{Binding ElementName=StyleWidth, Path=Width, Mode=OneWay}" Height="64px">
 				<Image Source="{StaticResource imageCloud}" Stretch="Fill"/>
 				<TextBlock HorizontalAlignment="Center" FontSize="24px" VerticalAlignment="Center" Text="asd"/>
 			</Grid>
 			<Grid Width="{Binding ElementName=StyleWidth, Path=Width, Mode=OneWay}" Height="64px">
 				<Image Source="{StaticResource imageCloud}" Stretch="Fill"/>
 				<TextBlock HorizontalAlignment="Center" FontSize="24px" VerticalAlignment="Center" Text="asd"/>
-			</Grid>
+			</Grid>-->
 		</ListBox>
-
+		<!--BackBtn-->
+		<Viewbox Grid.Row="3" Margin="0,8,0,0">
+			<Canvas Width="100px" Height="160px">
+				<Path Fill="#543a2a">
+					<Path.Data>
+						M91.08 0.42 85.12 0.13 73.06 2.25 81.94 149.88 89 150.25 Z
+						M78.57 26.58 75.03 26.24 14.16 36.75 0.27 63.85 4.5 64.18 Z
+					</Path.Data>
+				</Path>
+				<Path Fill="#9f6535">
+					<Path.Data>
+						M100.33 146.75 89 150.25 79.24 2.33 91.08 0.42 100.33 146.7 Z
+						M81.86 75.19 20.55 85.92 4.5 64.18 18 37.75 78.57 26.58 81.86 75.19 Z
+					</Path.Data>
+				</Path>
+				<Path Fill="#9f6535">
+					<Path.Data>
+						M4.5 64.18 0.27 63.85 16.9 85.07 20.55 85.92
+					</Path.Data>
+				</Path>
+				<!--todo-->
+				<Button x:Name="btnHelp" Content="Back"
+						Style="{StaticResource btnAlpha}"
+						Width="68" Height="48"
+						RenderTransformOrigin="0.5,0.5"
+						Canvas.Left="11" Canvas.Top="33"
+						Click="Back_Click">
+					<Button.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="-7.157"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Button.RenderTransform>
+				</Button>
+			</Canvas>
+		</Viewbox>
 
 		<Grid Grid.ColumnSpan="3" Grid.RowSpan="4"
 			  Visibility="Collapsed" x:Name="MsgBorder"

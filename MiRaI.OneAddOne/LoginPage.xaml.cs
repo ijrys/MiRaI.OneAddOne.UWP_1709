@@ -94,10 +94,8 @@ namespace MiRaI.OneAddOne {
 		}
 
 		private void btnReg_Click(object sender, RoutedEventArgs e) {
-			//RegisterPage rpage = new RegisterPage();
-			//rpage.RegSuccess += rpage_RegSuccess;
-
-			//rpage.Register(ParentWindow, this);
+			Frame rootFrame = Window.Current.Content as Frame;
+			rootFrame.Navigate(typeof(RegisterPage));
 		}
 
 		void rpage_RegSuccess(object sender, object[] args) {

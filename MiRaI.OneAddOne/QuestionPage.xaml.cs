@@ -594,6 +594,7 @@ namespace MiRaI.OneAddOne {
 				//ParentWindow.NavgateToPage(this);
 				txtAnswer.Focus(FocusState.Pointer);
 			}
+			MsgShow.Visibility = Visibility.Collapsed;
 		}
 
 

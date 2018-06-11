@@ -128,7 +128,13 @@ namespace MiRaI.OneAddOne {
 							User user = new User();
 							user._id = int.Parse(reader["ID"].ToString());
 							user._nickName = reader["Nickname"].ToString();
-							user._isParents = bool.Parse(reader["IsParents"].ToString());
+							string ss = reader["IsParents"].ToString();
+							if (ss == "0" || ss == "1") {
+								if (ss == "0") user._isParents = false;
+								else user._isParents = true;
+							} else {
+								user._isParents = bool.Parse(reader["IsParents"].ToString());
+							}
 							user._level = int.Parse(reader["level"].ToString());
 
 							if (reader.Read()) { // error
@@ -229,7 +235,15 @@ namespace MiRaI.OneAddOne {
 							User user = new User();
 							user._id = int.Parse(reader["ID"].ToString());
 							user._nickName = reader["Nickname"].ToString();
-							user._isParents = bool.Parse(reader["IsParents"].ToString());
+							//user._isParents = bool.Parse(reader["IsParents"].ToString());
+							string ss = reader["IsParents"].ToString();
+							if (ss == "0" || ss == "1") {
+								if (ss == "0") user._isParents = false;
+								else user._isParents = true;
+							}
+							else {
+								user._isParents = bool.Parse(reader["IsParents"].ToString());
+							}
 							user._level = int.Parse(reader["level"].ToString());
 
 							re.Add(user);
@@ -310,14 +324,14 @@ namespace MiRaI.OneAddOne {
 		/// <returns></returns>
 		public static bool CanNewAccount(string account) {
 			bool re = false;
-			using (SqliteConnection conn = new SqliteConnection (connstr)) {
-				using (SqliteCommand cmd = conn.CreateCommand ()) {
+			using (SqliteConnection conn = new SqliteConnection(connstr)) {
+				using (SqliteCommand cmd = conn.CreateCommand()) {
 					cmd.CommandText = "select count(*) from UserSet where Account = @account";
-					cmd.Parameters.AddWithValue ("@account", account);
+					cmd.Parameters.AddWithValue("@account", account);
 
-					conn.Open ();
+					conn.Open();
 
-					int num = int.Parse (cmd.ExecuteScalar ().ToString ());
+					int num = int.Parse(cmd.ExecuteScalar().ToString());
 
 					re = (num == 0);
 				}

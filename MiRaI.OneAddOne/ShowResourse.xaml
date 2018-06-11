@@ -22,6 +22,14 @@
 	<BitmapImage x:Key="imageCloud" UriSource="ms-appx:///imgs/c2.png"/>
 	<BitmapImage x:Key="imageGress" UriSource="ms-appx:///imgs/Gress.png"/>
 
+
+	<Style TargetType="ContentControl">
+		<Setter Property="Foreground" Value="#000"/>
+	</Style>
+	<Style TargetType="TextBox">
+		<Setter Property="Foreground" Value="#000"/>
+	</Style>
+	
 	<Style x:Key="pathGress" TargetType="Path">
 		<Setter Property="Fill" Value="#58b107"/>
 		<Setter Property="Stretch" Value="Fill"/>
@@ -58,6 +66,44 @@
 		<Setter Property="FocusVisualMargin" Value="-3"/>
 	</Style>
 
+	<Style x:Key="btnAlpha" TargetType="Button" BasedOn="{StaticResource btnStyleBase}">
+		<Setter Property="Background" Value="{x:Null}"/>
+		<Setter Property="Foreground" Value="#000"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Button">
+					<Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal">
+									<Storyboard>
+										<PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="PointerOver">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="#F95"/>
+										</ObjectAnimationUsingKeyFrames>
+										<PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Pressed">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="#FA6"/>
+										</ObjectAnimationUsingKeyFrames>
+										<PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
 
 	<Style x:Key="btnOrange" TargetType="Button" BasedOn="{StaticResource btnStyleBase}">
 		<Setter Property="Background" Value="#F73"/>
@@ -178,78 +224,4 @@
 	</Style>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<!--<Style TargetType="Button" x:Key="btnStyle" >
-		<Setter Property="Background" Value="{x:Null}"/>
-		<Setter Property="BorderBrush" Value="{x:Null}"/>
-		<Setter Property="Foreground" Value="#FFF"/>
-		<Setter Property="FontSize" Value="16px"/>
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="Button">
-					<Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}"
-					        BorderThickness="{TemplateBinding BorderThickness}"
-					        Background="{TemplateBinding Background}" >
-						<ContentPresenter x:Name="contentPresenter" 
-						                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-						                  Margin="{TemplateBinding Padding}" 
-						                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"  />
-					</Border>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>-->
-
-	<!--<Style TargetType="Button" BasedOn="{StaticResource btnStyle}" x:Key="btnStyleYellowLight">
-		<Setter Property="Background" Value="#FA6"/>
-		<Setter Property="Foreground" Value="#000"/>
-		<Setter Property="FontWeight" Value="Black"/>
-		<Style.Triggers>
-			<Trigger Property="IsMouseOver" Value="True">
-				<Setter Property="Background" Value="#FB7"/>
-			</Trigger>
-		</Style.Triggers>
-	</Style>-->
-	<!--<Style TargetType="Button" BasedOn="{StaticResource btnStyle}" x:Key="btnStyleYellow">
-		<Setter Property="Background" Value="#F73"/>
-		<Setter Property="Foreground" Value="#000"/>
-		<Setter Property="FontWeight" Value="Black"/>
-		<Style.Triggers>
-			<Trigger Property="IsMouseOver" Value="True">
-				<Setter Property="Background" Value="#F95"/>
-			</Trigger>
-		</Style.Triggers>
-	</Style>-->
-	<!--<Style TargetType="Button" BasedOn="{StaticResource btnStyle}" x:Key="btnStyleWanging">
-		<Setter Property="Background" Value="#F42"/>
-		<Setter Property="FontWeight" Value="Black"/>
-		<Style.Triggers>
-			<Trigger Property="IsMouseOver" Value="True">
-				<Setter Property="Background" Value="#F64"/>
-			</Trigger>
-		</Style.Triggers>
-	</Style>-->
 </ResourceDictionary>
