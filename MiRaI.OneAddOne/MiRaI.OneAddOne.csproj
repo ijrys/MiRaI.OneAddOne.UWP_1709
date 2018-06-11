@@ -11,7 +11,7 @@
     <AssemblyName>MiRaI.OneAddOne</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.15063.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16299.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -102,7 +102,6 @@
     <Compile Include="Creaters\L1C.cs" />
     <Compile Include="Creaters\L2C.cs" />
     <Compile Include="Creaters\M10C.cs" />
-    <Compile Include="History.cs" />
     <Compile Include="HistoryPage.xaml.cs">
       <DependentUpon>HistoryPage.xaml</DependentUpon>
     </Compile>
@@ -123,12 +122,12 @@
       <DependentUpon>SelecterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="StoreRoom.cs" />
-    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="Data\db.db" />
     <None Include="MiRaI.OneAddOne_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -189,21 +188,20 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.0.8</Version>
-    </PackageReference>
-    <PackageReference Include="Mntone.SvgForXaml">
-      <Version>0.9.2</Version>
+      <Version>6.1.5</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MiRaI.OneAddOne.Data.UWP\MiRaI.OneAddOne.Data.UWP.csproj">
+      <Project>{1a6d08e2-e44b-4fff-9a34-69bdeed59d1c}</Project>
+      <Name>MiRaI.OneAddOne.Data.UWP</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MiRaI.OoeAddOne.BasicType\MiRaI.OoeAddOne.BasicType.csproj">
       <Project>{811e5ff0-e1a6-42da-9512-e2466628f43e}</Project>
       <Name>MiRaI.OoeAddOne.BasicType</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

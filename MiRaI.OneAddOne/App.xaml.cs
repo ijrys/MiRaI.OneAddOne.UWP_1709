@@ -27,6 +27,18 @@ namespace MiRaI.OneAddOne {
 		public App() {
 			this.InitializeComponent();
 			this.Suspending += OnSuspending;
+
+
+			#region AppData
+			Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;// Create a setting
+			if (localSettings.Values.ContainsKey("guid")) {
+				AppDatas.machineGuid = new Guid(localSettings.Values["guid"].ToString());
+			} else {
+				Guid uid = new Guid();
+				localSettings.Values["guid"] = uid.ToString();
+				AppDatas.machineGuid = uid;
+			}
+			#endregion
 		}
 
 		/// <summary>

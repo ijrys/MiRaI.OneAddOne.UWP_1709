@@ -61,9 +61,5 @@ namespace MiRaI.OneAddOne {
 
 		public static User NowLoginedUser;
 
-
-		public static Guid MachineGuid () {
-			return new Guid();
-		}
 	}
 }
