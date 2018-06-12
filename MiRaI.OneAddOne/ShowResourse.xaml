@@ -29,7 +29,7 @@
 	<Style TargetType="TextBox">
 		<Setter Property="Foreground" Value="#000"/>
 	</Style>
-	
+
 	<Style x:Key="pathGress" TargetType="Path">
 		<Setter Property="Fill" Value="#58b107"/>
 		<Setter Property="Stretch" Value="Fill"/>
@@ -106,12 +106,23 @@
 	</Style>
 
 	<Style x:Key="btnOrange" TargetType="Button" BasedOn="{StaticResource btnStyleBase}">
-		<Setter Property="Background" Value="#F73"/>
+		<Setter Property="Background">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+					<GradientStop Color="#FFC9AD" Offset="0"/>
+					<GradientStop Color="#F73" Offset="0.3"/>
+					<GradientStop Color="#F73" Offset="0.9"/>
+					<GradientStop Color="#FFAD85" Offset="1"/>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="BorderBrush" Value="#E62"/>
+		<Setter Property="BorderThickness" Value="1"/>
 		<Setter Property="Foreground" Value="#000"/>
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="Button">
-					<Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
+					<Grid x:Name="RootGrid" CornerRadius="8" Background="{TemplateBinding Background}">
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="CommonStates">
 								<VisualState x:Name="Normal">
@@ -122,7 +133,16 @@
 								<VisualState x:Name="PointerOver">
 									<Storyboard>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="#F95"/>
+											<DiscreteObjectKeyFrame KeyTime="0">
+												<DiscreteObjectKeyFrame.Value>
+													<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+														<GradientStop Color="#FFD6BB" Offset="0"/>
+														<GradientStop Color="#F95" Offset="0.3"/>
+														<GradientStop Color="#F95" Offset="0.9"/>
+														<GradientStop Color="#FFC299" Offset="1"/>
+													</LinearGradientBrush>
+												</DiscreteObjectKeyFrame.Value>
+											</DiscreteObjectKeyFrame>
 										</ObjectAnimationUsingKeyFrames>
 										<PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
 									</Storyboard>
@@ -130,14 +150,23 @@
 								<VisualState x:Name="Pressed">
 									<Storyboard>
 										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="#FA6"/>
+											<DiscreteObjectKeyFrame KeyTime="0">
+												<DiscreteObjectKeyFrame.Value>
+													<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+														<GradientStop Color="#FFD6BB" Offset="0"/>
+														<GradientStop Color="#FA6" Offset="0.3"/>
+														<GradientStop Color="#FA6" Offset="0.9"/>
+														<GradientStop Color="#FFC299" Offset="1"/>
+													</LinearGradientBrush>
+												</DiscreteObjectKeyFrame.Value>
+											</DiscreteObjectKeyFrame>
 										</ObjectAnimationUsingKeyFrames>
 										<PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>
 									</Storyboard>
 								</VisualState>
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-						<ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						<ContentPresenter x:Name="ContentPresenter" CornerRadius="8" AutomationProperties.AccessibilityView="Raw" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
 					</Grid>
 				</ControlTemplate>
 			</Setter.Value>

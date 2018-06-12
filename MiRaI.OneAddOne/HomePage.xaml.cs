@@ -63,6 +63,7 @@ namespace MiRaI.OneAddOne {
 			if (rootFrame == null) return;
 
 			rootFrame.Navigate(typeof(HistoryPage), us);
+			
 		}
 
 		private void btnStart_Click(object sender, RoutedEventArgs e) {

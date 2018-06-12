@@ -42,7 +42,7 @@
 				<Grid.Resources>
 					<ResourceDictionary>
 						<Style TargetType="Button" BasedOn="{StaticResource btnOrange}">
-							<Setter Property="Width" Value="300px"/>
+							<Setter Property="Width" Value="284px"/>
 							<Setter Property="Height" Value="40px"/>
 						</Style>
 					</ResourceDictionary>
@@ -53,19 +53,6 @@
 				<Button x:Name="btnHistory" Grid.Row="1" Grid.Column="1" Content="历史记录" Click="btnHistory_Click" Visibility="Collapsed"/>
 				<Button x:Name="btnHelp" Grid.Row="2" Grid.Column="1" Content="帮助" Click="btnHelp_Click"/>
 
-				<Viewbox Grid.Row="1" Grid.Column="1">
-					<Canvas Width="100" Height="50">
-						<Rectangle Fill="Red" Width="100" Height="50"/>
-						<Rectangle Width="50" Height="10">
-							<Rectangle.Fill>
-								<LinearGradientBrush  StartPoint="0,0" EndPoint="0,1">
-									<GradientStop Color="#8FFF" Offset="0"/>
-									<GradientStop Color="#0FFF" Offset="1"/>
-								</LinearGradientBrush>
-							</Rectangle.Fill>
-						</Rectangle>
-					</Canvas>
-				</Viewbox>
 
 			</Grid>
 		</Viewbox>
