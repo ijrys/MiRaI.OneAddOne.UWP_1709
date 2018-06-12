@@ -34,7 +34,7 @@ namespace MiRaI.OneAddOne {
 		private void ShowMsg(string msg) {
 			labMsg.Text = msg;
 			if (msgshowStory == null) {
-				msgshowStory = Resources["MsgKirakira"] as Storyboard;
+				msgshowStory = Resources["MsgTwink"] as Storyboard;
 			}
 			msgshowStory.Begin();
 		}
@@ -80,11 +80,7 @@ namespace MiRaI.OneAddOne {
 
 			if (User.CreateUser(acc, pwd, nn, rIsP.IsChecked.Value)) {
 				MsgBorder.Visibility = Visibility.Visible;
-
-				//if (RegSuccess != null) RegSuccess.Invoke(this, null);
-				
-			}
-			else {
+			} else {
 				ShowMsg("发生未知错误");
 			}
 		}

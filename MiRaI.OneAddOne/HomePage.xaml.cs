@@ -69,20 +69,8 @@ namespace MiRaI.OneAddOne {
 			Frame rootFrame = Window.Current.Content as Frame;
 			if (rootFrame == null) return;
 			rootFrame.Navigate(typeof(SelecterPage), new SelecterPage.Info() { User = StoreRoom.NowLoginedUser });
-
-			Image img = new Image();
-			img.Source = new BitmapImage(new Uri("ms-appx:///imgs/c2.png"));
 		}
 
-		//private void btnLogin_PointerPressed(object sender, PointerRoutedEventArgs e) {
-		//	Debug.WriteLine("pressed");
-		//}
-
-		//private void btnLogin_PointerEntered(object sender, PointerRoutedEventArgs e) {
-		//	Button btn = sender as Button;
-		//	if (btn == null) return;
-
-		//}
 
 	}
 }

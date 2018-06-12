@@ -44,7 +44,7 @@ namespace MiRaI.OneAddOne {
 		private void ShowMsg(string msg) {
 			labMsg.Text = msg;
 			if (msgshowStory == null) {
-				msgshowStory = Resources["MsgKirakira"] as Storyboard;
+				msgshowStory = Resources["MsgTwink"] as Storyboard;
 			}
 			msgshowStory.Begin();
 		}
@@ -76,11 +76,13 @@ namespace MiRaI.OneAddOne {
 			rootFrame.GoBack();
 		}
 		private void Login_Click(object sender, RoutedEventArgs e) {
+			if (cbxUser.SelectedItem == null) return;
 			string uname = cbxUser.SelectionBoxItem as string;
 			string pwd = txtPwd.Password;
 			User.GetUserRes res = User.GetUser(uname, pwd);
 			if (res.state == User.GetUserEnum.ok) {
-				_refun?.Invoke(res);
+				//_refun?.Invoke(res);
+				if (_refun != null) _refun(res);
 				StoreRoom.NowLoginedUser = res.user;
 				BackPage();
 			}

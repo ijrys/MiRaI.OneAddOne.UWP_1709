@@ -15,7 +15,6 @@
 			<RowDefinition Height="1*"/>
 			<RowDefinition Height="1*"/>
 		</Grid.RowDefinitions>
-		<Button>1.0.4</Button>
 		<!--Width="330" Height="116"-->
 		<Viewbox Grid.ColumnSpan="3" Stretch="Fill">
 			<Canvas Width="800px" Height="65">
@@ -53,6 +52,21 @@
 				<Button x:Name="btnStart" Grid.Row="0" Grid.Column="1" Content="开始挑战" Click="btnStart_Click" Visibility="Collapsed"/>
 				<Button x:Name="btnHistory" Grid.Row="1" Grid.Column="1" Content="历史记录" Click="btnHistory_Click" Visibility="Collapsed"/>
 				<Button x:Name="btnHelp" Grid.Row="2" Grid.Column="1" Content="帮助" Click="btnHelp_Click"/>
+
+				<Viewbox Grid.Row="1" Grid.Column="1">
+					<Canvas Width="100" Height="50">
+						<Rectangle Fill="Red" Width="100" Height="50"/>
+						<Rectangle Width="50" Height="10">
+							<Rectangle.Fill>
+								<LinearGradientBrush  StartPoint="0,0" EndPoint="0,1">
+									<GradientStop Color="#8FFF" Offset="0"/>
+									<GradientStop Color="#0FFF" Offset="1"/>
+								</LinearGradientBrush>
+							</Rectangle.Fill>
+						</Rectangle>
+					</Canvas>
+				</Viewbox>
+
 			</Grid>
 		</Viewbox>
 

@@ -137,6 +137,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="MiRaI.OneAddOne_TemporaryKey.pfx" />
+    <None Include="music\btnClick.ogg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="imgs\00.png" />

@@ -57,7 +57,9 @@
 			</ListBox.Resources>
 			<ListBox.ItemTemplate>
 				<DataTemplate>
-					<TextBlock Width="{Binding ElementName=width1, Path=Width}" Style="{StaticResource lcTextBlockStyle}" Text="{Binding NickName}"/>
+					<TextBlock Width="{Binding ElementName=width1, Path=Width}"
+							   Style="{StaticResource lcTextBlockStyle}"
+							   Text="{Binding NickName}"/>
 				</DataTemplate>
 			</ListBox.ItemTemplate>
 		</ListBox>
