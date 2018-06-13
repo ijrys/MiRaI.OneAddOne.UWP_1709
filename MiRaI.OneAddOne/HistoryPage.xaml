@@ -37,6 +37,11 @@
 						M34.56,62.28A28.44,28.44,0,1,1,63,90.72,28.44,28.44,0,0,1,34.56,62.28Z
 					</Path.Data>
 				</Path>
+				<Path Fill="#ff3737">
+					<Path.Data>
+						M34.56,62.28A28.44,28.44,0,1,1,63,90.72,28.44,28.44,0,0,1,34.56,62.28Z
+					</Path.Data>
+				</Path>
 			</Canvas>
 		</Viewbox>
 
@@ -69,7 +74,13 @@
 				<RowDefinition Height="96"/>
 				<RowDefinition Height="1*"/>
 			</Grid.RowDefinitions>
-			<Grid x:Name="gridHead" Background="#F73">
+			<Grid x:Name="gridHead" CornerRadius="16,16,0,0" BorderBrush="#F73" BorderThickness="4,4,4,0">
+				<Grid.Background>
+					<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+						<GradientStop Color="#FFC9AD" Offset="0"/>
+						<GradientStop Color="#F73" Offset="0.3"/>
+					</LinearGradientBrush>
+				</Grid.Background>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="6"/>
 					<ColumnDefinition Width="3*"/>
@@ -96,8 +107,16 @@
 				<TextBlock Grid.Column="5">用时</TextBlock>
 			</Grid>
 			<ListBox x:Name="listShow" Grid.Row="1" Grid.RowSpan="2"
-		         Background="#FB8" BorderBrush="#F73" BorderThickness="4"
+		         Background="#FB8" BorderThickness="4"
 		         ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+				<ListBox.BorderBrush>
+					<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+						<GradientStop Color="#F73" Offset="0.8"/>
+						<GradientStop Color="#FFC9AD" Offset="0.95"/>
+						<GradientStop Color="#F84" Offset="1"/>
+					</LinearGradientBrush>
+				</ListBox.BorderBrush>
+				
 				<ListBox.Resources>
 					<ResourceDictionary>
 						<Style x:Key="lsTextBlockStyle" TargetType="TextBlock">
