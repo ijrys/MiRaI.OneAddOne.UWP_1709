@@ -22,6 +22,10 @@
 	<BitmapImage x:Key="imageCloud" UriSource="ms-appx:///imgs/c2.png"/>
 	<BitmapImage x:Key="imageGress" UriSource="ms-appx:///imgs/Gress.png"/>
 
+	<LinearGradientBrush x:Key="brushSky" StartPoint="0,0" EndPoint="0,1">
+		<GradientStop Offset="0.0" Color="#00B0F0"/>
+		<GradientStop Offset="1.0" Color="#B7FFE7"/>
+	</LinearGradientBrush>
 
 	<!--ColorBrush-->
 	<LinearGradientBrush x:Key="BrushOrange" StartPoint="0,0" EndPoint="0,1">
@@ -139,16 +143,16 @@
 								</VisualState>
 								<VisualState x:Name="PointerOver">
 									<Storyboard>
-										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="#F95"/>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="#CCC"/>
 										</ObjectAnimationUsingKeyFrames>
 										<PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
 									</Storyboard>
 								</VisualState>
 								<VisualState x:Name="Pressed">
 									<Storyboard>
-										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-											<DiscreteObjectKeyFrame KeyTime="0" Value="#FA6"/>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="#FFF"/>
 										</ObjectAnimationUsingKeyFrames>
 										<PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>
 									</Storyboard>

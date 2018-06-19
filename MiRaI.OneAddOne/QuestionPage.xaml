@@ -19,9 +19,11 @@
 				<EasingColorKeyFrame KeyTime="0:0:0.6" Value="#FFFFE699"/>
 			</ColorAnimationUsingKeyFrames>
 		</Storyboard>
-
+		<ImageBrush x:Key="brushBGImg" ImageSource="ms-appx:///imgs/qbg.png"/>
+		<BitmapImage x:Key="imgBG" UriSource="ms-appx:///imgs/qbg.png"/>
 	</Page.Resources>
-	<Grid x:Name="gridContent" Background="#FFE699">
+
+	<Grid x:Name="gridContent" Background="#FFFFE699">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="1*"/>
 			<RowDefinition Height="3*"/>
@@ -43,9 +45,16 @@
 			</ResourceDictionary>
 		</Grid.Resources>
 
+		<Image Grid.Row="1" Grid.RowSpan="3"
+			   Source="{StaticResource imgBG}"
+			   Stretch="UniformToFill" Opacity="0.3"/>
 
-
-		<Grid x:Name="gridHeadLine" Background="#ED7D31">
+		<Grid x:Name="gridHeadLine" >
+			<!--Background="#ED7D31"-->
+			<Grid.Background>
+				<!--<ImageBrush ImageSource="ms-appx:///imgs/qbg.png"/>-->
+				<SolidColorBrush Color="#ED7D31"/>
+			</Grid.Background>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="128"></ColumnDefinition>
 				<!--<ColumnDefinition Width="128px"></ColumnDefinition>-->
@@ -178,7 +187,7 @@
 
 		</Border>
 		<Grid Grid.ColumnSpan="3" Grid.RowSpan="4"
-			  Visibility="Visible" x:Name="MsgShow"
+			  Visibility="Collapsed" x:Name="MsgShow"
 				   Background="#9000">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="1*"/>

@@ -133,6 +133,7 @@
     <Content Include="Data\db.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="imgs\qbg.png" />
     <Content Include="sqliteSample.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
