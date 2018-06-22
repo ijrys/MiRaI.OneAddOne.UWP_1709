@@ -6,6 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+	<Page.Transitions>
+		<TransitionCollection>
+			<NavigationThemeTransition>
+				<DrillInNavigationTransitionInfo/>
+			</NavigationThemeTransition>
+		</TransitionCollection>
+	</Page.Transitions>
 	<Page.Resources>
 		<Storyboard x:Key="ACStory" AutoReverse="False" >
 			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="gridContent">
@@ -19,8 +26,7 @@
 				<EasingColorKeyFrame KeyTime="0:0:0.6" Value="#FFFFE699"/>
 			</ColorAnimationUsingKeyFrames>
 		</Storyboard>
-		<ImageBrush x:Key="brushBGImg" ImageSource="ms-appx:///imgs/qbg.png"/>
-		<BitmapImage x:Key="imgBG" UriSource="ms-appx:///imgs/qbg.png"/>
+		
 	</Page.Resources>
 
 	<Grid x:Name="gridContent" Background="#FFFFE699">
@@ -148,7 +154,8 @@
 				<Button Style="{StaticResource btnOrangeS}" Width="252" Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="2" Content="下一题" Click="btnSNext_Click"/>
 			</Grid>
 		</Viewbox>
-		<Border x:Name="ResaultPanel" Grid.RowSpan="4" Visibility="Visible" Background="#FFE699">
+		<Grid x:Name="ResaultPanel" Grid.RowSpan="4" Visibility="Visible" Background="#FFE699">
+			<Image Source="{StaticResource imgBG}" Stretch="UniformToFill" Opacity="0.3"/>
 			<Viewbox>
 				<Grid Width="1000" Height="256px">
 					<Grid.ColumnDefinitions>
@@ -185,15 +192,17 @@
 				</Grid>
 			</Viewbox>
 
-		</Border>
+		</Grid>
 		<Grid Grid.ColumnSpan="3" Grid.RowSpan="4"
-			  Visibility="Collapsed" x:Name="MsgShow"
+			  Visibility="Visible" x:Name="MsgShow"
 				   Background="#9000">
+
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="1*"/>
 				<ColumnDefinition Width="3*"/>
 				<ColumnDefinition Width="1*"/>
 			</Grid.ColumnDefinitions>
+			<Image Source="{StaticResource imgBG}" Stretch="UniformToFill" Grid.ColumnSpan="3" Opacity="0.3"/>
 			<Viewbox Grid.Column="1" Grid.Row="1">
 				<Grid Width="600" MinHeight="250"
 						BorderBrush="#B85" BorderThickness="8"

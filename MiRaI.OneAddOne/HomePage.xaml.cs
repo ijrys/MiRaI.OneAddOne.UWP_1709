@@ -49,8 +49,6 @@ namespace MiRaI.OneAddOne {
 
 
 		private void btnLogin_Click(object sender, RoutedEventArgs e) {
-			//LoginPage lp = new LoginPage();
-			//lp.Login(ParentWindow, this, UserLoginFun);
 			Frame rootFrame = Window.Current.Content as Frame;
 			if (rootFrame == null) return;
 

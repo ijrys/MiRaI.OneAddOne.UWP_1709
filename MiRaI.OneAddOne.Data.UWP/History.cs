@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MiRaI.OneAddOne {
+	/// <summary>
+	/// 历史记录
+	/// </summary>
 	public class History {
 		/// <summary>
 		/// 正确数
@@ -32,8 +35,6 @@ namespace MiRaI.OneAddOne {
 		/// </summary>
 		private DateTime testDate;
 
-		Guid _creatMachineId;
-		Guid _historyID;
 
 		/// <summary>
 		/// 正确数
@@ -98,26 +99,11 @@ namespace MiRaI.OneAddOne {
 				return string.Format("{0} : {1:00}", UseTime / 60, UseTime % 60);
 			}
 		}
-		/// <summary>
-		/// 历史记录创建设备ID
-		/// </summary>
-		public Guid CreatMachineId { get => _creatMachineId; }
-		/// <summary>
-		/// 历史记录ID
-		/// </summary>
-		public Guid HistoryID { get => _historyID; }
 
 		#region 构造函数
-		public History() : this(AppDatas.MachineGuid(), new Guid()) {
+		public History() {
 
 		}
-		public History(Guid historyID) : this(AppDatas.MachineGuid(), historyID) {
-
-		}
-		public History(Guid machineId, Guid historyId) {
-			_creatMachineId = machineId;
-			_historyID = historyId;
-		} 
 		#endregion
 	}
 }

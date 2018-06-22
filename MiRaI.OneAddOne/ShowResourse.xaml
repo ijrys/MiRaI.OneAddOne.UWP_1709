@@ -21,6 +21,8 @@
 	<BitmapImage x:Key="imageSun" UriSource="ms-appx:///imgs/Sun.png"/>
 	<BitmapImage x:Key="imageCloud" UriSource="ms-appx:///imgs/c2.png"/>
 	<BitmapImage x:Key="imageGress" UriSource="ms-appx:///imgs/Gress.png"/>
+	<ImageBrush x:Key="brushBGImg" ImageSource="ms-appx:///imgs/qbg.png"/>
+	<BitmapImage x:Key="imgBG" UriSource="ms-appx:///imgs/qbg.png"/>
 
 	<LinearGradientBrush x:Key="brushSky" StartPoint="0,0" EndPoint="0,1">
 		<GradientStop Offset="0.0" Color="#00B0F0"/>

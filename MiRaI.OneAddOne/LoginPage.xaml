@@ -6,7 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+	<Page.Transitions>
+		<TransitionCollection>
+			<NavigationThemeTransition>
+				<DrillInNavigationTransitionInfo/>
+			</NavigationThemeTransition>
+		</TransitionCollection>
+	</Page.Transitions>
 	<Page.Resources>
 		<Storyboard x:Key="MsgTwink">
 			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="border">
@@ -32,9 +38,10 @@
 						VerticalAlignment="Center"
 						FontSize="48px" Text="登录到1+1"/>
 		</Border>
+		<Border Background="#C84" Grid.Row="1" Grid.RowSpan="3"/>
+		<Image Source="{StaticResource imgBG}" Grid.Row="0" Grid.RowSpan="4" Stretch="UniformToFill" Opacity="0.2"/>
 		<Button Style="{StaticResource btnOrange}" Width="128px" Height="70px" FontSize="28px" HorizontalAlignment="Left" Margin="16,0,0,0" Content="返回" Click="btnBack_Click"/>
 		
-		<Border Background="#C84" Grid.Row="1" Grid.RowSpan="3"/>
 		<Viewbox Grid.Row="2">
 			<Grid Width="400px" Height="140px">
 				<Grid.RowDefinitions>

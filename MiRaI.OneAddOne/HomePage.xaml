@@ -6,7 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+	<Page.Transitions>
+		<TransitionCollection>
+			<NavigationThemeTransition>
+				<DrillInNavigationTransitionInfo/>
+			</NavigationThemeTransition>
+		</TransitionCollection>
+	</Page.Transitions>
 	<Grid Background="{StaticResource brushSky}">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="1*"/>
@@ -15,16 +21,19 @@
 			<RowDefinition Height="1*"/>
 			<RowDefinition Height="1*"/>
 		</Grid.RowDefinitions>
-		<!--Width="330" Height="116"-->
+		
+		<!--左上角-->
 		<Viewbox Grid.ColumnSpan="3" Stretch="Fill">
 			<Canvas Width="800px" Height="65">
-				<!--<Path Width="112px" Height="60px" Fill="#FFF" Stroke="#000" Data="{StaticResource CloudSmall_1}"/>-->
 				<Image Source="ms-appx:///imgs/c2.png"/>
-				<TextBlock Width="112px" Height="60px" x:Name="labUserName" TextAlignment="Center" Padding="0,16" FontSize="16px" />
+				<TextBlock Width="112px" Height="60px" x:Name="labUserName" TextAlignment="Center" Padding="0,16" FontSize="16px"/>
 			</Canvas>
 		</Viewbox>
-
-		<Image Grid.Row="1" Grid.ColumnSpan="3" Source="ms-appx:///imgs/c1.png"/>
+		
+		<!--LOGO-->
+		<Image Grid.Row="1" Grid.ColumnSpan="3" Source="ms-appx:///imgs/Logo.png"/>
+		
+		<!--草地-->
 		<Image Grid.Row="3" Grid.RowSpan="2" Stretch="Fill" Source="{StaticResource imageGress}"/>
 
 		<Viewbox Grid.Row="2" Grid.RowSpan="2">
